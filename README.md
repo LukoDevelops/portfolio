@@ -2,7 +2,7 @@
 
 Personal portfolio for Lukas Zemolochinas / LukoDevelops, with interactive 3D artwork, selected projects, and an animated editorial layout.
 
-Repository: [LukoDevelops/portfolio](https://github.com/LukoDevelops/portfolio). The repository has been created; the source push, Cloudflare configuration, and public-host verification are pending. No live website or custom domain is claimed yet.
+Repository: [LukoDevelops/portfolio](https://github.com/LukoDevelops/portfolio). The portfolio source is published on the main branch. Cloudflare GitHub authorization, Pages configuration, and public-host verification are pending. No live website or custom domain is claimed yet.
 
 ## Run locally
 
@@ -85,7 +85,7 @@ The previous resume PDF has outdated experience information and is not included.
 - The sculpted-cursor and caption pass checked the new arrow/wake on dark and cream surfaces, live ribbon geometry and decay, exact positioning, actual Three.js HTML selection, the system-cursor switch, Tab fallback, pause removal, text-field I-beam restoration, project-dialog suspension, Escape dismissal, and restored focus. Touch and forced-colors emulation remove the cursor decoration after the capability update; both emulations were reset afterward.
 - Portal labels were measured at 320, 390, 700, 768, 1024, 1440, and 1920 px plus 844 × 390 landscape. The model viewport has over 41 px of clearance to the caption text above and below it, the art block remains stationary, KEEP EXPLORING stays visible, and the page has no horizontal overflow at these sizes. Phone and desktop portal layouts were visually inspected.
 
-Reference screenshots are in `qa/`. The Three.js bundle is lazy-loaded separately; Vite reports its expected >500 kB uncompressed chunk warning. Gzipped Three.js output is approximately 143 kB. Physical touch hardware, Safari, Firefox, and actual browser zoom have not been tested. Context-loss recovery and offscreen scheduling were reviewed in code; forced context-loss and GPU profiling were not part of browser QA.
+Reference screenshots are kept locally in `qa/` and excluded from the repository and deployment. The Three.js bundle is lazy-loaded separately; Vite reports its expected >500 kB uncompressed chunk warning. Gzipped Three.js output is approximately 143 kB. Physical touch hardware, Safari, Firefox, and actual browser zoom have not been tested. Context-loss recovery and offscreen scheduling were reviewed in code; forced context-loss and GPU profiling were not part of browser QA.
 
 ## Assets and licenses
 
