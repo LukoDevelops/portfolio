@@ -1,0 +1,222 @@
+/* Native hiding is gated by both a real pointer position and live capability.
+   Open native dialogs immediately regain their existing cursor styles. */
+@media (hover: hover) and (pointer: fine) and (forced-colors: none) {
+  html[data-cursor="custom"]:not(:has(dialog[open])),
+  html[data-cursor="custom"]:not(:has(dialog[open])) * {
+    cursor: none !important;
+  }
+
+  html[data-cursor="custom"]:not(:has(dialog[open]))
+    :is(
+      input,
+      textarea,
+      [role="textbox"],
+      [contenteditable]:not([contenteditable="false" i])
+    ),
+  html[data-cursor="custom"]:not(:has(dialog[open]))
+    :is([role="textbox"], [contenteditable]:not([contenteditable="false" i]))
+    * {
+    cursor: text !important;
+  }
+
+  html[data-cursor="custom"]:not(:has(dialog[open])) :is(select, iframe) {
+    cursor: auto !important;
+  }
+}
+
+.pointer-flow,
+.pointer-flow * {
+  box-sizing: border-box;
+  pointer-events: none !important;
+}
+
+.pointer-flow {
+  --trail-opacity: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  overflow: hidden;
+  contain: strict;
+  visibility: hidden;
+  user-select: none;
+}
+
+.pointer-flow[data-visible="true"] {
+  visibility: visible;
+}
+
+html[data-cursor="custom"]:has(dialog[open]) .pointer-flow {
+  visibility: hidden;
+}
+
+.pointer-flow__trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  opacity: var(--trail-opacity);
+}
+
+.pointer-flow[data-over-text="true"] .pointer-flow__trail {
+  opacity: calc(var(--trail-opacity) * 0.78);
+}
+
+.pointer-flow__trail path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pointer-flow__glow {
+  stroke-width: 13px;
+  opacity: 0.3;
+  filter: blur(2.5px);
+}
+
+.pointer-flow__ribbon {
+  stroke: #214c3d;
+  stroke-width: 0.55px;
+  stroke-opacity: 0.22;
+  opacity: 0.88;
+}
+
+.pointer-flow__spine {
+  stroke-width: 1px;
+  opacity: 0.85;
+}
+
+/* Richer ink keeps the flowing wake visible against the cream artwork. */
+.pointer-flow[data-surface="light"] .pointer-flow__trail stop:nth-child(1) {
+  stop-color: #659b7e;
+}
+
+.pointer-flow[data-surface="light"] .pointer-flow__trail stop:nth-child(2) {
+  stop-color: #85aa8a;
+}
+
+.pointer-flow[data-surface="light"] .pointer-flow__trail stop:nth-child(3),
+.pointer-flow[data-surface="light"] .pointer-flow__trail stop:nth-child(4) {
+  stop-color: #b8795f;
+}
+
+.pointer-flow__cursor {
+  --cursor-x: -100px;
+  --cursor-y: -100px;
+  --cursor-bank: 0deg;
+  --nib-scale: 0.9;
+  --nib-intent: 0deg;
+  --nib-light: #e8fff1;
+  --nib-mid: #b8e8d0;
+  --nib-end: #e6b49e;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  transform: translate3d(var(--cursor-x), var(--cursor-y), 0);
+  will-change: transform;
+}
+
+.pointer-flow__nib {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  width: 26px;
+  height: 32px;
+  overflow: visible;
+  /* SVG coordinate (0,0), at (2px,2px) in its box, is the raw hit point. */
+  transform-origin: 2px 2px;
+  transform: rotate(calc(var(--cursor-bank) + var(--nib-intent)));
+  scale: var(--nib-scale);
+  filter: drop-shadow(0 1px 0.7px rgb(12 34 25 / 38%));
+  transition: scale 170ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pointer-flow__nib-body {
+  stroke: #183b2e;
+  stroke-width: 1.15px;
+  stroke-linejoin: round;
+}
+
+.pointer-flow__nib-facet {
+  fill: #2d5a47;
+  opacity: 0.25;
+  transition: opacity 150ms ease;
+}
+
+.pointer-flow__nib-ridge {
+  stroke: #f1fff6;
+  stroke-width: 0.9px;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+
+.pointer-flow__nib-heel {
+  stroke: #fbe2d5;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.pointer-flow__material-light {
+  stop-color: var(--nib-light);
+  transition: stop-color 160ms ease;
+}
+
+.pointer-flow__material-mid {
+  stop-color: var(--nib-mid);
+  transition: stop-color 160ms ease;
+}
+
+.pointer-flow__material-end {
+  stop-color: var(--nib-end);
+  transition: stop-color 160ms ease;
+}
+
+.pointer-flow[data-kind="link"] .pointer-flow__cursor,
+.pointer-flow[data-kind="control"] .pointer-flow__cursor {
+  --nib-scale: 1.04;
+  --nib-mid: #eed0bc;
+  --nib-end: #efa991;
+}
+
+.pointer-flow[data-kind="project"] .pointer-flow__cursor {
+  --nib-scale: 1.13;
+  --nib-light: #fff7e9;
+  --nib-mid: #edc3ab;
+  --nib-end: #e79f88;
+}
+
+.pointer-flow[data-kind="scene"] .pointer-flow__cursor {
+  --nib-scale: 1.02;
+  --nib-mid: #cff4dd;
+  --nib-intent: -3deg;
+}
+
+.pointer-flow[data-external="true"] .pointer-flow__cursor {
+  --nib-intent: -4deg;
+}
+
+.pointer-flow[data-kind="scene"][data-scene-action="true"]
+  .pointer-flow__cursor {
+  --nib-scale: 1.12;
+  --nib-mid: #edc3ab;
+  --nib-end: #e79f88;
+}
+
+.pointer-flow[data-kind="project"] .pointer-flow__nib-facet,
+.pointer-flow[data-kind="link"] .pointer-flow__nib-facet,
+.pointer-flow[data-kind="control"] .pointer-flow__nib-facet {
+  opacity: 0.38;
+}
+
+.pointer-flow[data-pressed="true"] .pointer-flow__nib {
+  scale: calc(var(--nib-scale) * 0.86);
+  transition-duration: 90ms;
+}
+
+@media (hover: none), (pointer: coarse), (forced-colors: active) {
+  .pointer-flow {
+    display: none;
+  }
+}

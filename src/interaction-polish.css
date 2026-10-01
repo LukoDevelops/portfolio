@@ -1,0 +1,454 @@
+/* Tactile details stay inside each control; the click targets remain still. */
+:root {
+  --interaction-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.primary-link {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 #ffffff70,
+    inset 0 -1px 0 #1a402e30;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.primary-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    #ffffff3b 47%,
+    transparent 65%
+  );
+  transform: translateX(-115%);
+  transition: transform 650ms var(--interaction-ease);
+  pointer-events: none;
+}
+
+.primary-link:is(:hover, :focus-visible) {
+  transform: none;
+  background-color: #d6f5df;
+  box-shadow:
+    inset 0 1px 0 #ffffff70,
+    inset 0 -1px 0 #1a402e30;
+}
+
+.primary-link:is(:hover, :focus-visible)::before {
+  transform: translateX(115%);
+}
+
+.primary-link:active {
+  background-color: #add9b9;
+}
+
+.primary-link svg,
+.text-link svg,
+.header-contact svg,
+.repo-top > svg:last-child,
+.email-link svg,
+.social-links a > svg:last-child,
+.site-footer a svg {
+  transition:
+    transform 320ms var(--interaction-ease),
+    opacity 180ms ease;
+}
+
+:is(.primary-link, .header-contact, .email-link, .social-links a):is(
+    :hover,
+    :focus-visible
+  )
+  .lucide-arrow-up-right,
+.text-link:is(:hover, :focus-visible) .lucide-arrow-up-right,
+.site-footer a:is(:hover, :focus-visible) .lucide-arrow-up-right {
+  transform: translate(2px, -2px);
+}
+
+.text-link:is(:hover, :focus-visible) .lucide-arrow-right {
+  transform: translateX(3px);
+}
+
+.text-link,
+.copy-email {
+  position: relative;
+}
+
+.text-link::after,
+.copy-email::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 360ms var(--interaction-ease);
+  pointer-events: none;
+}
+
+.text-link:is(:hover, :focus-visible)::after,
+.copy-email:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.icon-button {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.icon-button:is(:hover, :focus-visible) {
+  background-color: #bdecc912;
+  color: #d6f6de;
+  border-color: #bdecc97a;
+}
+
+.icon-button:active {
+  background-color: #bdecc924;
+}
+
+/* Description panels and the artwork now read as one complete project object. */
+.featured-card {
+  position: relative;
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.featured-card:not(.study-card) {
+  background: linear-gradient(160deg, #1b2922db, #101a15ed);
+  box-shadow: inset 0 0 0 1px #c9e5cc1c;
+}
+
+.featured-card:not(.study-card) .featured-description {
+  margin: 0;
+  padding: 23px 24px 28px;
+}
+
+.featured-description .eyebrow {
+  color: #b4c4b5;
+}
+
+.featured-description p {
+  color: #b8c2b7;
+}
+
+.study-card {
+  border-color: #c4f6c93a;
+}
+
+.study-card:is(:hover, :focus-visible) {
+  border-color: #c4f6c989;
+}
+
+.featured-card .project-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px #fff4;
+  background: linear-gradient(125deg, #fff0 20%, #ffffff1f 48%, #fff0 75%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.featured-card:is(:hover, :focus-visible) .project-visual::after {
+  opacity: 1;
+}
+
+.round-arrow {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.round-arrow svg {
+  transition: transform 350ms var(--interaction-ease);
+}
+
+.featured-card:is(:hover, :focus-visible) .round-arrow {
+  transform: none;
+  border-color: #d1efda;
+  color: #18251d;
+  background-color: #d1efda;
+}
+
+.featured-card:is(:hover, :focus-visible) .round-arrow svg {
+  transform: translate(2px, -2px);
+}
+
+.featured-card:active .round-arrow {
+  background-color: #acd6b7;
+}
+
+.featured-card:focus-visible {
+  outline: 2px solid #c5f2d1;
+  outline-offset: 6px;
+}
+
+/* Repository highlights are deliberately quiet around the denser catalogue. */
+.repository-card {
+  transition: background-color 220ms ease;
+}
+
+.repository-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    #bdecc900,
+    #bdecc9a3 32%,
+    #e9b49b4d,
+    #bdecc900
+  );
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+}
+
+.repository-card:is(:hover, :focus-visible) {
+  background-color: #bdecc910;
+}
+
+.repository-card:is(:hover, :focus-visible)::before {
+  opacity: 1;
+}
+
+.repository-card:focus-visible {
+  outline-offset: -3px;
+  border-radius: 3px;
+}
+
+.repository-card h4 {
+  transition: color 180ms ease;
+}
+
+.repository-card:is(:hover, :focus-visible) h4 {
+  color: #d8f4df;
+}
+
+.repository-card p {
+  color: #b4bdb2;
+}
+
+.repo-index {
+  color: #98a994;
+}
+
+.repo-meta {
+  color: #afbaa7;
+}
+
+.repo-top > svg:last-child {
+  opacity: 0.65;
+}
+
+.repository-card:is(:hover, :focus-visible) .repo-top > svg:last-child {
+  transform: translate(2px, -2px);
+  opacity: 1;
+  color: #bdecc9;
+}
+
+.search-box {
+  transition: border-color 180ms ease;
+}
+
+.search-box:focus-within {
+  border-color: #c5f2d1;
+  color: #c5f2d1;
+  box-shadow: 0 1px 0 #c5f2d1;
+}
+
+.filter-bar button:is(:hover, :focus-visible) {
+  color: #e7eee3;
+  border-bottom-color: #bdecc968;
+}
+
+.filter-bar button.selected:is(:hover, :focus-visible) {
+  color: #c5f2d1;
+  border-bottom-color: #c5f2d1;
+}
+
+.filter-bar button:focus-visible {
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* A project overview is a compact editorial page rather than a floating alert. */
+.case-dialog {
+  box-shadow:
+    inset 0 1px 0 #f0fff02b,
+    0 28px 100px #0008;
+  scrollbar-width: thin;
+  scrollbar-color: #72997b #15231b;
+}
+
+.case-dialog > .eyebrow {
+  color: #bad2be;
+}
+
+.case-dialog .dialog-close {
+  background-color: #0e19177a;
+  border-color: #c5e9cc40;
+}
+
+.case-dialog .dialog-close:is(:hover, :focus-visible) {
+  background-color: #bdecc921;
+  border-color: #bdecc98c;
+}
+
+.dialog-intro {
+  color: #cbd7c4;
+  line-height: 1.65;
+}
+
+.case-section {
+  border-top-color: #c6dec32a;
+}
+
+.case-section h3 {
+  color: #e9eee0;
+}
+
+.case-section h3::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 10px;
+  vertical-align: 0.15em;
+  background-color: #bdecc9;
+  border-radius: 1px;
+}
+
+.case-section p {
+  color: #b5c0b1;
+}
+
+.dialog-actions {
+  padding-top: 26px;
+  border-top: 1px solid #c6dec32a;
+}
+
+.email-link {
+  position: relative;
+}
+
+.email-link::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #d0f3d9;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 420ms var(--interaction-ease);
+  pointer-events: none;
+}
+
+.email-link:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.email-link:focus-visible {
+  outline-offset: 8px;
+  border-radius: 2px;
+}
+
+.copy-email:is(:hover, :focus-visible) {
+  color: #e1f6e6;
+}
+
+.social-links a {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.social-links a:is(:hover, :focus-visible) {
+  background-color: #d0f0d7;
+  border-color: #d0f0d7;
+  color: #17291e;
+}
+
+.social-links a:active {
+  background-color: #a9d3b4;
+}
+
+@media (max-width: 700px) {
+  .featured-card:not(.study-card) .featured-description {
+    padding: 22px 20px 25px;
+    gap: 16px;
+  }
+
+  .dialog-actions {
+    padding-top: 21px;
+  }
+
+  .case-dialog .dialog-close {
+    min-width: 42px;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Global motion-off rules still suppress transitions. These resets also keep
+   decorative travel absent when motion is disabled, while preserving state. */
+html[data-motion="off"] .primary-link::before {
+  display: none;
+}
+
+html[data-motion="off"]
+  :is(
+    .primary-link,
+    .text-link,
+    .header-contact,
+    .email-link,
+    .social-links a,
+    .site-footer a
+  )
+  :is(.lucide-arrow-up-right, .lucide-arrow-right),
+html[data-motion="off"] :is(.round-arrow svg, .repo-top > svg:last-child) {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="on"]) .primary-link::before {
+    display: none;
+  }
+
+  html:not([data-motion="on"])
+    :is(
+      .primary-link,
+      .text-link,
+      .header-contact,
+      .email-link,
+      .social-links a,
+      .site-footer a
+    )
+    :is(.lucide-arrow-up-right, .lucide-arrow-right),
+  html:not([data-motion="on"])
+    :is(.round-arrow svg, .repo-top > svg:last-child) {
+    transform: none !important;
+  }
+}

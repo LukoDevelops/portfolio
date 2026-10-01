@@ -1,0 +1,252 @@
+/* Small, coordinated movements give the illustrations a shared rhythm. */
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 2px);
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transform: translateY(4px) scale(0.5);
+  transition:
+    opacity 200ms ease,
+    transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.main-nav a.active::after {
+  left: calc(50% - 2px);
+  background: #fff;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  box-shadow: 0 0 9px #dcf6e355;
+}
+.skill-key,
+.hero-quick-keys button {
+  transition:
+    transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+.hero-quick-keys button:hover {
+  transform: translateY(-3px);
+  border-color: #cdf9cb78;
+}
+.detail-symbol {
+  animation: ingredient-arrive 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.panel-front {
+  animation: panel-float 9s ease-in-out infinite;
+}
+.panel-back {
+  animation: panel-depth 9s ease-in-out infinite;
+}
+.panel-front::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 25px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e0ffe68c, transparent);
+  box-shadow: 0 0 8px #d0ffc12a;
+  pointer-events: none;
+  animation: interface-scan 7s ease-in-out infinite;
+}
+.mini-layout span {
+  animation: interface-state 7s ease-in-out infinite;
+}
+.mini-layout span:nth-child(2) {
+  animation-delay: -0.45s;
+}
+.mini-layout span:nth-child(3) {
+  animation-delay: -0.9s;
+}
+.server-layer {
+  animation: server-float 7.5s ease-in-out infinite;
+}
+.layer-b {
+  animation-delay: -0.55s;
+}
+.layer-c {
+  animation-delay: -1.1s;
+}
+.server-layer i {
+  animation: data-signal 4.5s ease-in-out infinite;
+}
+.server-layer i:nth-of-type(2) {
+  animation-delay: -0.35s;
+}
+.server-layer i:nth-of-type(3) {
+  animation-delay: -0.7s;
+}
+.layer-c i {
+  animation-duration: 5.5s;
+}
+.system-line::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 22px;
+  left: -1px;
+  top: 0;
+  border-radius: 2px;
+  background: linear-gradient(transparent, #d2ffbf, transparent);
+  animation: data-route 4.5s cubic-bezier(0.3, 0.6, 0.3, 1) infinite;
+}
+.creative-cube {
+  animation: cube-turn 28s linear infinite;
+}
+.creative-ring {
+  animation: ring-drift 11s ease-in-out infinite;
+}
+.creative-core {
+  animation: core-breathe 5.5s ease-in-out infinite;
+}
+@keyframes ingredient-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(8px) rotate(-6deg) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+@keyframes panel-float {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: -1deg;
+  }
+  50% {
+    translate: -3px -11px;
+    rotate: 1deg;
+  }
+}
+@keyframes panel-depth {
+  0%,
+  100% {
+    translate: 0 -3px;
+    opacity: 0.55;
+  }
+  50% {
+    translate: 4px 4px;
+    opacity: 0.7;
+  }
+}
+@keyframes interface-scan {
+  0%,
+  12% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  28% {
+    opacity: 0.7;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  88%,
+  100% {
+    opacity: 0;
+    translate: 0 112px;
+  }
+}
+@keyframes interface-state {
+  0%,
+  100% {
+    opacity: 0.7;
+    translate: 0 0;
+  }
+  45% {
+    opacity: 1;
+    translate: 0 -2px;
+  }
+}
+@keyframes server-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 2px -8px;
+  }
+}
+@keyframes data-signal {
+  0%,
+  55%,
+  100% {
+    opacity: 0.45;
+  }
+  25%,
+  35% {
+    opacity: 1;
+  }
+}
+@keyframes data-route {
+  0% {
+    translate: 0 0;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    translate: 0 150px;
+    opacity: 0;
+  }
+}
+@keyframes cube-turn {
+  0% {
+    transform: rotateX(-22deg) rotateY(35deg);
+    translate: 0 0;
+  }
+  25% {
+    transform: rotateX(-14deg) rotateY(125deg);
+    translate: 0 -5px;
+  }
+  50% {
+    transform: rotateX(-22deg) rotateY(215deg);
+    translate: 0 0;
+  }
+  75% {
+    transform: rotateX(-30deg) rotateY(305deg);
+    translate: 0 5px;
+  }
+  100% {
+    transform: rotateX(-22deg) rotateY(395deg);
+    translate: 0 0;
+  }
+}
+@keyframes ring-drift {
+  0%,
+  100% {
+    transform: rotate(-32deg) rotateX(0);
+  }
+  50% {
+    transform: rotate(-24deg) rotateX(17deg);
+  }
+}
+@keyframes core-breathe {
+  0%,
+  100% {
+    opacity: 0.65;
+    scale: 0.9;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.12;
+  }
+}
+@media (max-width: 700px) {
+  .main-nav a::after,
+  .main-nav a.active::after {
+    left: auto;
+    right: 0;
+    bottom: 21px;
+  }
+}
