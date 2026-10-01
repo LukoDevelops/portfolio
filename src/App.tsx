@@ -9,7 +9,9 @@ import {
   ChevronDown,
   Code2,
   Copy,
+  Download,
   ExternalLink,
+  FileText,
   GitBranch,
   Github,
   Globe2,
@@ -1190,6 +1192,32 @@ function App() {
                   <Github size={17} />
                   GitHub
                   <ArrowUpRight size={15} />
+                </a>
+              </div>
+              <div className="social-links document-links">
+                <a
+                  href={links.resume}
+                  download="Lukas_Zemolochinas_Resume_2026.pdf"
+                  aria-label="Download resume (PDF)"
+                >
+                  <FileText size={17} aria-hidden="true" />
+                  <span>
+                    Resume
+                    <small>DOWNLOAD PDF</small>
+                  </span>
+                  <Download size={15} aria-hidden="true" />
+                </a>
+                <a
+                  href={links.coverLetter}
+                  download="Lukas_Zemolochinas_Cover_Letter_2026.pdf"
+                  aria-label="Download cover letter (PDF)"
+                >
+                  <FileText size={17} aria-hidden="true" />
+                  <span>
+                    Cover letter
+                    <small>DOWNLOAD PDF</small>
+                  </span>
+                  <Download size={15} aria-hidden="true" />
                 </a>
               </div>
             </div>

@@ -4,6 +4,8 @@ export const links = {
   recommendations:
     "https://www.linkedin.com/in/lukas-z-8b589523b/details/recommendations/",
   email: "lukodevelops@gmail.com",
+  resume: "/documents/Lukas_Zemolochinas_Resume_2026.pdf",
+  coverLetter: "/documents/Lukas_Zemolochinas_Cover_Letter_2026.pdf",
 };
 
 export type Skill = {

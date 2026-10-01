@@ -62,7 +62,7 @@ Cloudflare Pages' free plan serves this static build. Production deployment and 
 - Searchable, filterable library of 22 relevant repositories with category counts, trimmed search, a clear control, keyboard Escape clearing, focus-preserving reset, result announcements, and accessible expansion state.
 - Cohesive project-card panels, subtle directional hover cues, focus highlights, refined overview dialogs, and tactile contact controls. Click targets stay stationary while their inner details respond.
 - Attributed excerpts from public LinkedIn recommendations.
-- Email, LinkedIn, and GitHub contact links.
+- Email, LinkedIn, and GitHub contact links, plus downloadable resume and cover letter PDFs.
 
 ## Content sources and review
 
@@ -72,7 +72,7 @@ Skyline copy uses the user's descriptions of healthcare/dentistry interfaces, re
 
 Testimonials are short, exact excerpts from Nicholas Evans, Timothy Williams, and William Maness, with public profile attribution and a link to the recommendations section. The AI Study Companion card is an original interface concept, labeled as such, rather than an actual app screenshot.
 
-The previous resume PDF has outdated experience information and is not included. A reviewed final resume, the approved portrait, detailed education timeline, and expanded case studies remain future content updates. The free public address is live; custom-domain configuration remains a separate step.
+The redesigned 2026 resume and cover letter are available in `public/documents/` and linked from Contact. They are copied from the finalized PDFs in the parent workspace; updates to those source documents must also be copied into this repository before deployment. The approved portrait, detailed education timeline, and expanded case studies remain future content updates. The free public address is live; custom-domain configuration remains a separate step.
 
 ## Verification
 
