@@ -2,7 +2,9 @@
 
 Personal portfolio for Lukas Zemolochinas / LukoDevelops, with interactive 3D artwork, selected projects, and an animated editorial layout.
 
-Repository: [LukoDevelops/portfolio](https://github.com/LukoDevelops/portfolio). The portfolio source is published on the main branch. Cloudflare GitHub authorization, Pages configuration, and public-host verification are pending. No live website or custom domain is claimed yet.
+Live portfolio and free backup address: [lukodevelops.pages.dev](https://lukodevelops.pages.dev/).
+
+Repository: [LukoDevelops/portfolio](https://github.com/LukoDevelops/portfolio). Cloudflare Pages automatically builds and deploys the main branch. The public Pages deployment is verified; custom-domain registration and configuration remain pending.
 
 ## Run locally
 
@@ -22,16 +24,23 @@ npm run preview
 
 The production output is `dist/`. No API keys, external font requests, or server-side runtime are required.
 
-## Launch on Cloudflare Pages
+## Cloudflare Pages deployment
 
-1. Push this portfolio directory to its separate GitHub repository. Do not publish the surrounding Personal workspace.
-2. Connect `LukoDevelops/portfolio` to Cloudflare Pages after the Git integration is authorized. Use production branch `main`, the repository root as the build root, build command `npm run build`, and output directory `dist`.
-3. Set the build environment variable `NODE_VERSION` to `24.13.1`. Once the production address is assigned, set `VITE_SITE_URL` to that public HTTPS origin and rebuild. Use the final custom-domain origin after it is connected; do not use a preview-deployment address.
-4. Verify the public site, project links, search, keyboard interaction, dialogs, motion controls, and phone layout before sharing it. Custom-domain registration and DNS configuration are separate from the Pages deployment.
+The `lukodevelops` project uses the existing GitHub integration, limited to `LukoDevelops/portfolio`. Only this repository is deployed, not the surrounding Personal workspace.
+
+- Production branch: `main`
+- Build root: repository root
+- Build command: `npm run build`
+- Output directory: `dist`
+- Build environment: `NODE_VERSION=24.13.1`, `VITE_SITE_URL=https://lukodevelops.pages.dev`
+
+The Pages address is free and does not require student verification or a separately purchased domain. Keep it available alongside the future custom domain: do not redirect `pages.dev` to the custom domain. Once the main domain is connected and verified, update `VITE_SITE_URL` to its HTTPS origin and rebuild; the backup address will still serve the same site.
+
+If the custom domain has a registration or DNS problem, use the Pages URL in portfolio links while resolving it. This is a manual switch, not automatic failover. Both addresses share Cloudflare hosting, so this does not provide a separate host for a Cloudflare outage.
 
 `npm run build` runs TypeScript checking, Vite, and `scripts/prepare-site.mjs`. The final script uses `VITE_SITE_URL` to write the canonical URL, social-image URLs, sitemap, and sitemap reference in `robots.txt`. The value must be a public HTTPS origin without credentials, a port, a path beyond `/`, a query, or a fragment. With the variable unset, builds still work and omit URL-specific metadata and the sitemap, so local builds do not advertise an unverified address.
 
-Cloudflare Pages' free plan is sufficient for the static build. The launch configuration and successful public deployment still need verification.
+Cloudflare Pages' free plan serves this static build. Production deployment and public browser checks passed on September 30, 2026.
 
 ## Included
 
@@ -63,10 +72,11 @@ Skyline copy uses the user's descriptions of healthcare/dentistry interfaces, re
 
 Testimonials are short, exact excerpts from Nicholas Evans, Timothy Williams, and William Maness, with public profile attribution and a link to the recommendations section. The AI Study Companion card is an original interface concept, labeled as such, rather than an actual app screenshot.
 
-The previous resume PDF has outdated experience information and is not included. A reviewed final resume, the approved portrait, detailed education timeline, and expanded case studies remain future content updates. Domain configuration and public deployment are tracked in the launch steps above.
+The previous resume PDF has outdated experience information and is not included. A reviewed final resume, the approved portrait, detailed education timeline, and expanded case studies remain future content updates. The free public address is live; custom-domain configuration remains a separate step.
 
 ## Verification
 
+- The free public Pages deployment was checked in Chrome: desktop and 390 px phone layouts, project search, project dialog and Escape dismissal, HTML selection, Contact navigation, correct canonical/social-image origin, and no browser console errors.
 - TypeScript checking and production build pass.
 - Chrome visual inspection of the redesigned desktop opening, selected work, sculpture interlude, toolbox, About, and narrow-phone contact.
 - Responsive layout checks at 320, 390, 768, 1024, 1440, and 1920 px, plus 844 × 390 landscape. No horizontal layout overflow found in the main content at these sizes. A narrow-phone social-link overflow was fixed and rechecked.
