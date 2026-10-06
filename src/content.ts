@@ -257,7 +257,7 @@ export const professionalSkills: Skill[] = [
     color: "#b7b5ef",
     category: "Design & communication",
     description:
-      "Custom environments, architectural models, creatures, and individual assets, with attention to both the visual result and the client brief.",
+      "Individual models, environmental assets, environments, maps, architectural work, creatures, and concept art, guided by the visual goal and the client brief.",
     connection: "Top-rated Fiverr work with more than CAD $15,000 in sales.",
   },
   {
@@ -342,6 +342,9 @@ export type Project = {
   description: string;
   language: string;
   fork: boolean;
+  url?: string;
+  context?: string;
+  sourceUnavailable?: boolean;
   category: "Applications" | "Tools" | "Game systems" | "Interfaces";
 };
 export const projects: Project[] = [
@@ -376,6 +379,17 @@ export const projects: Project[] = [
     language: "Lua",
     fork: true,
     category: "Game systems",
+  },
+  {
+    name: "The Helios Frontier",
+    description:
+      "Substantial contributions to a collaborative game-development project for the United Valarian Confederation. Project details available on request.",
+    language: "Game development",
+    fork: false,
+    category: "Game systems",
+    url: "#contact",
+    context: "Collaborative project · Source unavailable",
+    sourceUnavailable: true,
   },
   {
     name: "litematica",
@@ -440,7 +454,12 @@ export const projects: Project[] = [
   ...["MaxDps", "MaxDps-Hunter", "MaxDps-Priest", "MaxDps-Mage"].map(
     (name) => ({
       name,
-      description: "A repository in the MaxDps addon family.",
+      description:
+        name === "MaxDps-Mage"
+          ? "Five personal patch-branch commits updating Frost and Arcane logic and the addon manifest. Branch work, separate from merged upstream contributions."
+          : name === "MaxDps-Hunter"
+            ? "Hunter rotation support in the MaxDps family, including one merged upstream contribution."
+            : "A repository in the MaxDps addon family.",
       language: "Lua",
       fork: true,
       category: "Game systems" as const,

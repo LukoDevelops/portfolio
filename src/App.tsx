@@ -16,6 +16,7 @@ import {
   Github,
   Globe2,
   Linkedin,
+  LockKeyhole,
   Menu,
   MousePointer2,
   Pause,
@@ -746,20 +747,31 @@ function App() {
                 <a
                   className="repository-card"
                   key={project.name}
-                  href={`${links.github}/${project.name}`}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={project.url ?? `${links.github}/${project.name}`}
+                  target={project.sourceUnavailable ? undefined : "_blank"}
+                  rel={project.sourceUnavailable ? undefined : "noreferrer"}
+                  aria-label={
+                    project.sourceUnavailable
+                      ? `${project.name}: contact me for project details; public source unavailable`
+                      : undefined
+                  }
                 >
                   <div className="repo-top">
                     <span className="repo-index">
                       {(i + 1).toString().padStart(2, "0")}
                     </span>
-                    {project.fork ? (
-                      <GitBranch size={16} />
+                    {project.sourceUnavailable ? (
+                      <LockKeyhole size={16} aria-hidden="true" />
+                    ) : project.fork ? (
+                      <GitBranch size={16} aria-hidden="true" />
                     ) : (
-                      <Code2 size={17} />
+                      <Code2 size={17} aria-hidden="true" />
                     )}
-                    <ArrowUpRight size={17} />
+                    {project.sourceUnavailable ? (
+                      <ArrowDown size={17} aria-hidden="true" />
+                    ) : (
+                      <ArrowUpRight size={17} aria-hidden="true" />
+                    )}
                   </div>
                   <h4>{project.name}</h4>
                   <p>{project.description}</p>
@@ -778,7 +790,10 @@ function App() {
                       {project.language}
                     </span>
                     <span>
-                      {project.fork ? "Open-source fork" : "Original project"}
+                      {project.context ??
+                        (project.fork
+                          ? "Open-source fork"
+                          : "Original project")}
                     </span>
                   </div>
                 </a>

@@ -1,12 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
   CheckCheck,
   ChevronDown,
   GitBranch,
-  Globe2,
-  LockKeyhole,
   Search,
 } from "lucide-react";
 import directory from "./projectDirectory.json";
@@ -60,37 +58,37 @@ const evidence = [
     detail:
       "Contributions to a World of Warcraft collection tracker, including collectible coordinates and content-data updates. The review history shows the specific changes within a much larger collaborative project.",
     points: [
-      "Collectible data",
-      "Coordinate corrections",
-      "Reviewed upstream changes",
+      "184 upstream stars",
+      "18 upstream watchers",
+      "125 GitHub-account contributors",
     ],
     primary:
       "https://github.com/ATTWoWAddon/AllTheThings/pulls?q=is%3Apr+is%3Amerged+author%3ALukoDevelops",
     primaryLabel: "Review my merged contributions",
     secondary: "https://github.com/ATTWoWAddon/AllTheThings/pull/2132",
     secondaryLabel: "See a coordinate correction",
-    note: "Personal merged pull requests, checked October 6, 2026. The project is maintained by its upstream community.",
+    note: "19 personal merged pull requests. Community figures belong to the upstream repository. Snapshot: October 6, 2026.",
   },
   {
-    id: "midnight",
-    title: "Midnight Routine",
-    label: "COMMUNITY PROJECT / PLANNING TOOLS",
-    value: "4",
+    id: "questie",
+    title: "Questie",
+    label: "COMMUNITY PROJECT / DEFENSIVE VALIDATION",
+    value: "1",
     metric: "of my pull requests merged",
-    summary: "Practical maintenance for a game-planning tool.",
+    summary: "A targeted correction in a widely used quest helper.",
     detail:
-      "Contributions to a World of Warcraft to-do-list addon, including profession-knowledge data updates. A focused change can help keep an everyday planning tool current.",
+      "An accepted contribution tightened checks for map coordinates and invalid UI-map IDs in the Mists of Pandaria Classic beta. A focused defensive fix within a much larger community-maintained addon.",
     points: [
-      "Profession-knowledge data",
-      "Planning-tool maintenance",
-      "Reviewed upstream changes",
+      "1,101 upstream stars",
+      "39 upstream watchers",
+      "150 GitHub-account contributors",
     ],
     primary:
-      "https://github.com/LoyalFTW/Midnight-Routine/pulls?q=is%3Apr+is%3Amerged+author%3ALukoDevelops",
+      "https://github.com/Questie/Questie/pulls?q=is%3Apr+is%3Amerged+author%3ALukoDevelops",
     primaryLabel: "Review my merged contributions",
-    secondary: "https://github.com/LoyalFTW/Midnight-Routine/pull/78",
-    secondaryLabel: "See a profession-data update",
-    note: "Personal merged pull requests, checked October 6, 2026. Original project authorship remains with its upstream maintainers.",
+    secondary: "https://github.com/Questie/Questie/pull/7002",
+    secondaryLabel: "See the map-validation fix",
+    note: "One personal merged pull request. Community figures belong to the upstream repository. Snapshot: October 6, 2026.",
   },
   {
     id: "resources",
@@ -101,13 +99,17 @@ const evidence = [
     summary: "Small corrections. Clearer resource planning.",
     detail:
       "Contributed missing recipe and material mappings to an existing resource calculator. These targeted fixes connect careful data checking with a practical planning workflow.",
-    points: ["Recipe mappings", "Material data", "Resource-planning workflows"],
+    points: [
+      "80 upstream stars",
+      "47 upstream forks",
+      "20 GitHub-account contributors",
+    ],
     primary:
       "https://github.com/AsherGlick/ResourceCalculator/pulls?q=is%3Apr+is%3Amerged+author%3ALukoDevelops",
     primaryLabel: "Review my merged contributions",
     secondary: "https://github.com/AsherGlick/ResourceCalculator/pull/60",
     secondaryLabel: "See a resource-mapping update",
-    note: "My repository is a personal fork. These counts reflect merged upstream contributions, checked October 6, 2026.",
+    note: "Two personal merged pull requests. Stars, forks and contributor counts belong to the upstream repository. Snapshot: October 6, 2026.",
   },
 ];
 
@@ -157,7 +159,7 @@ export function PublicWork() {
             <strong>{item.value}</strong>
             <span>{item.metric}</span>
           </div>
-          <div className="evidence-story" aria-live="polite">
+          <div className="evidence-story">
             <span className="eyebrow">{item.label}</span>
             <h4>{item.summary}</h4>
             <p>{item.detail}</p>
@@ -190,28 +192,9 @@ export function PublicWork() {
           </div>
         </div>
       </div>
-      <div className="private-project">
-        <div className="private-project-symbol" aria-hidden="true">
-          <Globe2 size={46} />
-          <span>UVC</span>
-        </div>
-        <div className="private-project-copy">
-          <span className="eyebrow">
-            <LockKeyhole size={11} aria-hidden="true" /> PROJECT OVERVIEW /
-            PUBLIC SOURCE UNAVAILABLE
-          </span>
-          <h4>The Helios Frontier</h4>
-          <p>
-            Substantial contributions to a collaborative game-development
-            project for the United Valarian Confederation. A further part of my
-            game-systems and collaborative-development background.
-          </p>
-        </div>
-        <a href="#contact" className="text-link">
-          Details on request
-          <ArrowRight size={16} aria-hidden="true" />
-        </a>
-      </div>
+      <p className="sr-only" role="status" aria-atomic="true">
+        {item.title}: {item.value} {item.metric}.
+      </p>
     </div>
   );
 }
@@ -219,10 +202,12 @@ export function PublicWork() {
 export function RepositoryDirectory() {
   const [scope, setScope] = useState<"owned" | "community">("owned");
   const [query, setQuery] = useState("");
+  const searchRef = useRef<HTMLInputElement>(null);
   const filter = query.trim().toLowerCase();
-  const rows = (
-    scope === "owned" ? directory.owned : directory.community
-  ).filter((row) => row.name.toLowerCase().includes(filter));
+  const collection = scope === "owned" ? directory.owned : directory.community;
+  const rows = collection.filter((row) =>
+    row.name.toLowerCase().includes(filter),
+  );
   return (
     <details className="repository-directory">
       <summary>
@@ -230,7 +215,8 @@ export function RepositoryDirectory() {
         <span>
           <strong>The complete public directory</strong>
           <small>
-            25 account repositories · 14 community contribution repositories
+            {directory.owned.length} account repositories ·{" "}
+            {directory.community.length} community contribution repositories
           </small>
         </span>
         <ChevronDown size={18} aria-hidden="true" />
@@ -249,19 +235,20 @@ export function RepositoryDirectory() {
               aria-controls="directory-results"
               onClick={() => setScope("owned")}
             >
-              My account <span>25</span>
+              My account <span>{directory.owned.length}</span>
             </button>
             <button
               aria-pressed={scope === "community"}
               aria-controls="directory-results"
               onClick={() => setScope("community")}
             >
-              Community contributions <span>14</span>
+              Community contributions <span>{directory.community.length}</span>
             </button>
           </div>
           <label>
             <Search size={14} aria-hidden="true" />
             <input
+              ref={searchRef}
               aria-label="Search the complete repository directory"
               type="search"
               placeholder="Find a repository…"
@@ -300,9 +287,22 @@ export function RepositoryDirectory() {
             </li>
           ))}
         </ul>
+        {rows.length === 0 && (
+          <div className="directory-empty">
+            <p>No repositories match “{query.trim()}” in this collection.</p>
+            <button
+              onClick={() => {
+                setQuery("");
+                searchRef.current?.focus();
+              }}
+            >
+              Clear search <ArrowRight size={14} aria-hidden="true" />
+            </button>
+          </div>
+        )}
         <p className="directory-result-count" role="status">
-          {rows.length} of {scope === "owned" ? "25 account" : "14 community"}{" "}
-          repositories shown.
+          {rows.length} of {collection.length}{" "}
+          {scope === "owned" ? "account" : "community"} repositories shown.
         </p>
       </div>
     </details>

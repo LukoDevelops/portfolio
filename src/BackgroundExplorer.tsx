@@ -17,6 +17,7 @@ import {
 } from "./background";
 import { links } from "./content";
 import { Monogram } from "./Monogram";
+import { CareerProof } from "./CareerProof";
 import { useCareer } from "./CareerContext";
 
 export function PerspectiveSwitch() {
@@ -217,40 +218,7 @@ export function IndustryExplorer() {
             </div>
           </div>
         </div>
-        <div className="evidence-strip">
-          <div>
-            <strong>
-              6<span> years</span>
-            </strong>
-            <span>Overall experience</span>
-          </div>
-          <div>
-            <strong>
-              $15k<span>+ CAD</span>
-            </strong>
-            <span>Freelance 3D sales</span>
-          </div>
-          <div>
-            <strong>
-              500<span>+</span>
-            </strong>
-            <span>Merged WoW-Pro contributions</span>
-            <a
-              href="https://github.com/Ludovicus-Maior/WoW-Pro-Guides/pulls?q=is%3Apr+is%3Amerged+author%3ALukoDevelops"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="View my merged WoW-Pro contributions"
-            >
-              <ArrowUpRight size={14} />
-            </a>
-          </div>
-          <div>
-            <strong>
-              3<span> people</span>
-            </strong>
-            <span>B2B sales team led</span>
-          </div>
-        </div>
+        <CareerProof />
       </div>
     </section>
   );

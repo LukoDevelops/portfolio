@@ -118,7 +118,7 @@
     monospace;
   max-width: 15ch;
   margin-bottom: auto;
-  color: #628069;
+  color: #4a654f;
 }
 .evidence-story {
   padding: 30px;
@@ -128,7 +128,7 @@
 .evidence-story .eyebrow {
   font-size: 8px;
   line-height: 1.6;
-  color: #738970;
+  color: #4a654f;
 }
 .evidence-story h4 {
   font-size: clamp(22px, 2vw, 28px);
@@ -141,7 +141,7 @@
 .evidence-story > p {
   font-size: 12px;
   line-height: 1.8;
-  color: #687e65;
+  color: #4a654f;
 }
 .evidence-story ul {
   list-style: none;
@@ -176,9 +176,9 @@
   border-top: 1px solid #bccdb4;
   padding-top: 15px;
   margin-top: 19px;
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1.8;
-  color: #7c8f72;
+  color: #4a654f;
 }
 .project-evidence :focus-visible {
   outline-color: #285035;
@@ -420,6 +420,29 @@
 .directory-content .directory-result-count {
   font-size: 9px;
   margin-bottom: 0;
+}
+.directory-empty {
+  border: 1px dashed #84a88f66;
+  border-radius: 9px;
+  padding: 24px 20px;
+  color: #bcd4c1;
+}
+.directory-empty p {
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  margin: 0 0 13px;
+}
+.directory-empty button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  padding: 9px 13px;
+  font-size: 11px;
+  background: #c8ebcd;
+  border-radius: 7px;
+  color: #183d2c;
 }
 
 /* Scroll moves only atmospheric planes and the bounded 3D poses, never labels. */

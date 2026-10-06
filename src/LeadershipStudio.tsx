@@ -144,7 +144,7 @@ const organizations = [
     id: "bison",
     name: "Bison Onward",
     company: "Bison Onward Consulting Center LLC",
-    label: "BUSINESS & TECHNICAL ADVISORY",
+    label: "CONSULTING / PROJECT COORDINATION",
     color: "#BAC8E5",
     headline: "Make the discussion useful to everyone.",
     description:

@@ -285,12 +285,12 @@ export const experience = [
   },
   {
     company: "Bison Onward Consulting Center LLC",
-    role: "Software Consultant",
+    role: "Software Consultant & Project Coordinator",
     period: "Mar 2024 — Sep 2026",
     location: "US client engagements · Remote",
     tags: ["Consulting", "Team coordination", "Agile delivery"],
     description:
-      "Advised clients across industries on business and technical needs, company spending, and technology investment, alongside software delivery and team coordination.",
+      "Combined software consulting with project coordination for clients across industries: gathering requirements, summarizing decisions, delegating work, and helping teams deliver in agile environments.",
     points: [
       "Joined client meetings and conferences, discussed priorities and improvements, summarized key information, and translated it into recommendations and team tasks.",
       "Provided business and technical advice on company spending and technology-investment decisions.",
@@ -316,14 +316,14 @@ export const experience = [
   },
   {
     company: "Fiverr",
-    role: "3D Designer",
+    role: "3D Artist & Environment Designer",
     period: "Apr 2020 — Jul 2024",
     location: "Ontario · Remote freelance",
     tags: ["CAD $15,000+ sales", "Top-rated", "Visual design"],
     description:
-      "Created custom 3D models and visual assets for games, graphics, individual projects, and client commissions, earning more than CAD $15,000 in sales.",
+      "Created custom 3D models, game assets, environments, maps, and concept art for varied games, graphics, and client commissions, earning more than CAD $15,000 in sales as an individual freelancer.",
     points: [
-      "Produced environments, architectural work, creatures, individual models, and other custom assets.",
+      "Produced individual models, creatures, architectural work, environmental assets, game environments, maps, and concept art.",
       "Worked with clients and project partners to develop visual ideas and respond to feedback.",
       "Combined modelling, texturing, presentation, and client service in a top-rated freelance practice.",
     ],
