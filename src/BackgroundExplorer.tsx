@@ -9,10 +9,18 @@ import {
   CalendarDays,
   MapPin,
 } from "lucide-react";
-import { experience, industries, perspectives, process } from "./background";
+import {
+  experience,
+  industryFamilies,
+  perspectives,
+  process,
+} from "./background";
 import { links } from "./content";
+import { Monogram } from "./Monogram";
+import { useCareer } from "./CareerContext";
 
 export function PerspectiveSwitch() {
+  const { openExperience } = useCareer();
   const [selected, setSelected] = useState(0);
   const item = perspectives[selected];
   return (
@@ -49,13 +57,19 @@ export function PerspectiveSwitch() {
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        <a
-          href="#experience"
+        <button
+          onClick={() =>
+            openExperience(
+              ["Skyline Dynamics Inc.", "Sport Chek", "Fiverr", "Upwork"][
+                selected
+              ],
+            )
+          }
           aria-label={`Explore ${item.name} in my experience`}
           className="perspective-next"
         >
           <ArrowDown size={20} />
-        </a>
+        </button>
       </div>
     </div>
   );
@@ -63,7 +77,18 @@ export function PerspectiveSwitch() {
 
 export function IndustryExplorer() {
   const [selected, setSelected] = useState(0);
-  const industry = industries[selected];
+  const [sectorIndex, setSectorIndex] = useState(0);
+  const { openExperience } = useCareer();
+  const family = industryFamilies[selected];
+  const sector = family.sectors[sectorIndex];
+  const sectorCount = industryFamilies.reduce(
+    (sum, group) => sum + group.sectors.length,
+    0,
+  );
+  const selectFamily = (index: number) => {
+    setSelected(index);
+    setSectorIndex(0);
+  };
   return (
     <section
       className="industry-explorer"
@@ -81,50 +106,50 @@ export function IndustryExplorer() {
             <em>Common ground.</em>
           </h2>
           <p>
-            People, priorities, and a useful result. My experience crosses
-            industries—and connects the work between them.
+            People, priorities, and a useful result. Explore six families of
+            client and work experience, then choose a sector to see the context.
           </p>
         </div>
         <div className="industry-explorer-layout">
           <div
             className="industry-orbit"
-            style={{ "--sector-color": industry.color } as React.CSSProperties}
+            style={{ "--sector-color": family.color } as React.CSSProperties}
           >
             <div className="atlas-grid" aria-hidden="true" />
             <div className="atlas-ring atlas-ring-a" aria-hidden="true" />
             <div className="atlas-ring atlas-ring-b" aria-hidden="true" />
             <div className="atlas-ring atlas-ring-c" aria-hidden="true" />
             <span className="atlas-caption atlas-caption-top">
-              THE EXPERIENCE ATLAS
+              THE EXPERIENCE ATLAS / {sectorCount} SECTOR CONTEXTS
             </span>
             <div className="atlas-core" aria-hidden="true">
-              <span>L</span>
+              <Monogram />
               <small>CONNECTED IDEAS</small>
-              <i />
-              <i />
-              <i />
             </div>
             <div
               className="sector-navigation"
-              aria-label="Choose an industry to explore"
+              aria-label="Choose an industry family"
             >
-              {industries.map((sector, index) => (
+              {industryFamilies.map((group, index) => (
                 <button
-                  key={sector.id}
-                  onClick={() => setSelected(index)}
+                  key={group.id}
+                  onClick={() => selectFamily(index)}
                   aria-pressed={selected === index}
+                  aria-controls="industry-detail"
                   style={
                     {
                       "--sector-index": index,
-                      "--sector-color": sector.color,
+                      "--sector-color": group.color,
                     } as React.CSSProperties
                   }
                 >
                   <span className="sector-icon" aria-hidden="true">
-                    {sector.icon}
+                    {group.icon}
                   </span>
-                  <span className="sector-name">{sector.title}</span>
-                  <span className="sector-number">0{index + 1}</span>
+                  <span className="sector-name">{group.title}</span>
+                  <span className="sector-number">
+                    0{index + 1} / {group.sectors.length} CONTEXTS
+                  </span>
                 </button>
               ))}
             </div>
@@ -134,39 +159,62 @@ export function IndustryExplorer() {
           </div>
           <div
             className="industry-detail"
-            style={{ "--sector-color": industry.color } as React.CSSProperties}
-            aria-live="polite"
+            id="industry-detail"
+            style={{ "--sector-color": family.color } as React.CSSProperties}
           >
             <div className="industry-detail-top">
               <span className="eyebrow">
-                0{selected + 1} / {industry.subtitle}
+                0{selected + 1} / {family.title}
               </span>
               <span className="industry-mini-icon" aria-hidden="true">
-                {industry.icon}
+                {family.icon}
               </span>
             </div>
-            <div key={industry.id} className="industry-detail-content">
-              <h3>{industry.focus}</h3>
-              <p>{industry.text}</p>
-              <ul>
-                {industry.activities.map((activity) => (
-                  <li key={activity}>
-                    <Check size={15} />
-                    {activity}
-                  </li>
+            <div key={family.id} className="industry-detail-content">
+              <h3>{family.focus}</h3>
+              <p>{family.text}</p>
+              <div
+                className="sector-chips"
+                aria-label={`Explore ${family.title} sectors`}
+              >
+                {family.sectors.map((item, index) => (
+                  <button
+                    key={item.name}
+                    aria-pressed={sectorIndex === index}
+                    aria-controls="sector-note"
+                    onClick={() => setSectorIndex(index)}
+                  >
+                    {item.name}
+                    <span aria-hidden="true">
+                      {sectorIndex === index ? "−" : "+"}
+                    </span>
+                  </button>
                 ))}
-              </ul>
+              </div>
+            </div>
+            <div
+              className="sector-note"
+              id="sector-note"
+              key={`${family.id}-${sector.name}`}
+              aria-live="polite"
+            >
+              <span className="eyebrow">IN CONTEXT / {sector.name}</span>
+              <p>{sector.text}</p>
+              <button
+                className="text-link"
+                onClick={() => openExperience(sector.company ?? family.company)}
+              >
+                Explore {sector.company ?? family.company}{" "}
+                <ArrowDown size={15} />
+              </button>
             </div>
             <div className="industry-context">
               <span className="status-dot" />
               <p>
-                Experience shown here reflects past work. I’m open to bringing
-                the same curiosity and transferable skills to a new industry.
+                Past client and work contexts, grouped for exploration. The
+                scope varied by engagement.
               </p>
             </div>
-            <a className="text-link" href="#experience">
-              Follow the career journey <ArrowDown size={16} />
-            </a>
           </div>
         </div>
         <div className="evidence-strip">
@@ -209,9 +257,7 @@ export function IndustryExplorer() {
 }
 
 export function ExperienceJourney() {
-  const [expanded, setExpanded] = useState<string | null>(
-    experience[0].company,
-  );
+  const { expanded, setExpanded } = useCareer();
   return (
     <section
       className="experience-journey section-shell"
@@ -238,7 +284,7 @@ export function ExperienceJourney() {
           <div className="journey-passport">
             <span className="eyebrow">EXPERIENCE PASSPORT</span>
             <div className="passport-mark" aria-hidden="true">
-              L
+              <Monogram />
             </div>
             <h3>
               Lukas
@@ -275,6 +321,7 @@ export function ExperienceJourney() {
             <article
               className={`journey-entry ${expanded === job.company ? "is-open" : ""}`}
               key={job.company}
+              id={`career-entry-${index}`}
             >
               <button
                 className="journey-toggle"

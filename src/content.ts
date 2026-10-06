@@ -192,7 +192,7 @@ export const professionalSkills: Skill[] = [
     color: "#e4c48c",
     category: "Business & people",
     description:
-      "Company setup, tax and administration, office management, and the details that help a business run.",
+      "Company formation, legal administration, taxes, office management, budgeting, and the details that help a business run.",
     connection:
       "Founder of Skyline Dynamics, with two years of office-management experience.",
   },
@@ -237,7 +237,7 @@ export const professionalSkills: Skill[] = [
     description:
       "Delegate work, share the context, remove blockers, and keep people aligned around the next useful step.",
     connection:
-      "Founder, software consultant, product ownership, and B2B sales-team management.",
+      "An international 15–20-person Skyline team, an 8–10-specialist Upwork agency, and B2B sales-team management.",
   },
   {
     id: "powerpoint",
@@ -283,6 +283,41 @@ export const professionalSkills: Skill[] = [
       "A practical analytical layer within my wider software and consulting background.",
   },
 ];
+professionalSkills.push(
+  {
+    id: "financeplanning",
+    name: "Budgeting & financial planning",
+    label: "Budget",
+    color: "#d7d29b",
+    category: "Business & people",
+    description:
+      "Budgeting, forecasting, financial planning, and analysis as part of running Skyline Dynamics.",
+    connection:
+      "Company ownership alongside legal administration, taxes, team leadership, and client delivery.",
+  },
+  {
+    id: "businessdevelopment",
+    name: "Business development",
+    label: "Growth",
+    color: "#e7bba3",
+    category: "Business & people",
+    description:
+      "Project prospecting, client relationships, and discussions that connect an opportunity with practical delivery.",
+    connection:
+      "Upwork developer, consultant, and agency lead; approximately US$50,000 in agency revenue.",
+  },
+  {
+    id: "strategicplanning",
+    name: "Priorities & strategic planning",
+    label: "Focus",
+    color: "#bac8e5",
+    category: "Business & people",
+    description:
+      "Quarterly and annual priority discussions, recommendations, scope definition, and planning improvements with clients.",
+    connection:
+      "Client conferences and discussions through Skyline Dynamics and business / technical advisory at Bison Onward.",
+  },
+);
 export const skills: Skill[] = [...professionalSkills, ...technicalSkills];
 export const keyboardSkills: Skill[] = [
   professionalSkills[0],
@@ -510,7 +545,7 @@ export const caseStudies = {
     title: "Skyline Dynamics",
     category: "Past business · US clients · Cross-industry delivery",
     intro:
-      "Founded a business incorporated in Dover, Delaware, and operated remotely from Cobourg, Ontario. Served US clients across startups at Series A, B, and C stages and established companies in a wide range of industries.",
+      "Founded a business incorporated in Dover, Delaware, and operated remotely from Cobourg, Ontario with an international team of 15–20 people. Served US clients from startups at Series A, B, and C stages to established companies across a wide range of industries.",
     sections: [
       {
         title: "Business impact",
@@ -530,11 +565,11 @@ export const caseStudies = {
       },
       {
         title: "E-commerce, fashion, fintech & beyond",
-        text: "Built e-commerce systems from the ground up, with full-stack and AI / ML work. Other engagements included fashion, fintech, software, consulting, and government-related / security work. Front-end, back-end, AI / ML, and DevOps contributions varied with each client's needs.",
+        text: "Built full-stack e-commerce systems with AI / ML work. The broader US client background spanned fashion and retail; fintech, banking, insurance, and investment businesses; entertainment and media; food and beverage; hospitality and tourism; education; software and IT; heavy industry, manufacturing, agriculture, and sustainable businesses; construction, transport, logistics, and government-related / security work. Responsibilities varied by engagement.",
       },
       {
         title: "Business ownership & delivery",
-        text: "Handled formation, tax and administration alongside scope definition, client relationships, and team coordination. Client recommendations describe clear communication, contractor coordination, scoping, onboarding, and keeping stakeholders aligned. Skyline Dynamics is a past chapter, not a currently active role.",
+        text: "Led an international 15–20-person team and handled formation, legal administration, taxes, budgeting, forecasting, financial planning, and analysis. Joined invited client conferences and discussions about quarterly and annual priorities and business improvements, alongside scope definition and coordinated delivery. Skyline Dynamics is a past chapter, not a currently active role.",
       },
     ],
     url: links.recommendations,

@@ -45,118 +45,219 @@ export const perspectives = [
   },
 ];
 
-export const industries = [
+export type IndustrySector = {
+  name: string;
+  text: string;
+  company?: string;
+};
+export const industryFamilies = [
   {
-    id: "healthcare",
-    title: "Healthcare",
-    subtitle: "Healthcare · Dentistry",
+    id: "health",
+    title: "Health & science",
+    subtitle: "People, care & complex systems",
     icon: "✚",
     color: "#bdddc9",
-    focus: "Interfaces, integrations, and healthcare systems.",
-    text: "Front-end components and back-end work for US healthcare and dentistry clients, including work around EHR and hospital systems.",
+    focus: "Keep the human experience in focus.",
+    text: "US client engagements across healthcare, dentistry, and pharmaceuticals, with front-end and back-end delivery shaped by each organization's requirements.",
     activities: [
-      "Interface & UI components",
-      "Front-end / back-end integration",
-      "Healthcare system functionality",
+      "Healthcare interfaces & integrations",
+      "EHR / hospital-system work",
+      "Requirements & client communication",
     ],
-  },
-  {
-    id: "automotive",
-    title: "Automotive",
-    subtitle: "Automotive · Dealerships",
-    icon: "↗",
-    color: "#ebbb96",
-    focus: "The experience, and everything behind it.",
-    text: "Back-end payment-related functionality and vehicle showcases for automotive clients, connecting visual presentation with the services behind it.",
-    activities: [
-      "Payment-related back-end work",
-      "Vehicle showcase interfaces",
-      "Client requirements & delivery",
-    ],
-  },
-  {
-    id: "commerce",
-    title: "Commerce",
-    subtitle: "E-commerce · Fashion",
-    icon: "□",
-    color: "#bfb8e5",
-    focus: "From the first interface to the underlying system.",
-    text: "Full-stack systems built from the ground up for e-commerce clients, with AI / ML work where it formed part of the project. Client engagements also spanned fashion.",
-    activities: [
-      "Full-stack systems",
-      "AI / ML development",
-      "Business-to-technical translation",
-    ],
-  },
-  {
-    id: "property",
-    title: "Real estate",
-    subtitle: "Real estate · Property",
-    icon: "⌂",
-    color: "#aacde0",
-    focus: "Bring the visual experience into focus.",
-    text: "Front-end interfaces, UI components, and integration work for real-estate companies, shaped around the client's needs and existing systems.",
-    activities: [
-      "Front-end development",
-      "Reusable UI components",
-      "Service integration",
-    ],
+    company: "Skyline Dynamics Inc.",
+    sectors: [
+      {
+        name: "Healthcare",
+        text: "Contributed to front-end components and back-end functionality around EHR, hospitals, and healthcare systems.",
+      },
+      {
+        name: "Dentistry",
+        text: "Built visual interfaces, UI components, and front-end / back-end connections for dentistry clients.",
+      },
+      {
+        name: "Pharmaceuticals",
+        text: "Served pharmaceutical-company contexts through US client work, combining requirements, specialist coordination, and technical delivery.",
+      },
+    ] as IndustrySector[],
   },
   {
     id: "finance",
-    title: "Fintech",
-    subtitle: "Fintech · Insurance",
+    title: "Finance & advisory",
+    subtitle: "Business, decisions & investment",
     icon: "↔",
     color: "#d9d7a0",
-    focus: "Practical advice across complex requirements.",
-    text: "Technical delivery and advisory engagements across fintech through Skyline Dynamics, and insurance through Bison Onward, alongside broader multi-industry consulting work.",
+    focus: "Translate complexity into a practical next step.",
+    text: "Business and technical advisory work across finance-related and professional-service clients, joining discussions, clarifying priorities, and translating decisions into delivery.",
     activities: [
-      "Technical advice",
-      "Requirements gathering",
-      "Development & documentation",
+      "Business & technology advice",
+      "Spending & technology-investment decisions",
+      "Stakeholder meetings & team delegation",
     ],
+    company: "Bison Onward Consulting Center LLC",
+    sectors: [
+      {
+        name: "Fintech",
+        text: "Fintech engagements connected software delivery and consulting with a client's business requirements.",
+        company: "Skyline Dynamics Inc.",
+      },
+      {
+        name: "Banking",
+        text: "Supported banking client contexts through Skyline, connecting business requirements with technical advice and delivery.",
+        company: "Skyline Dynamics Inc.",
+      },
+      {
+        name: "Insurance",
+        text: "Consulted for insurance clients, gathering requirements and contributing technical advice, documentation, and delivery coordination.",
+      },
+      {
+        name: "Investment businesses",
+        text: "Investment-sector clients formed part of the business background. Advisory work concerned company spending and technology investment.",
+      },
+      {
+        name: "Consulting",
+        text: "Discussed business and technical needs, summarized recommendations, delegated tasks, and helped coordinate agile delivery.",
+      },
+    ] as IndustrySector[],
   },
   {
-    id: "public",
-    title: "Public sector",
-    subtitle: "Government-related · Security",
+    id: "commerce",
+    title: "Commerce & lifestyle",
+    subtitle: "Products, customers & everyday experiences",
+    icon: "□",
+    color: "#ebbb96",
+    focus: "Connect the business with the people it serves.",
+    text: "Client delivery across consumer-facing businesses, plus direct customer service and store operations. A range of contexts with a common need for clear, useful experiences.",
+    activities: [
+      "Full-stack e-commerce delivery",
+      "Client & customer relationships",
+      "Visual experiences & practical operations",
+    ],
+    company: "Skyline Dynamics Inc.",
+    sectors: [
+      {
+        name: "E-commerce",
+        text: "Built systems from the ground up, connecting full-stack development and AI / ML work where it formed part of the brief.",
+      },
+      {
+        name: "Fashion",
+        text: "Worked with fashion clients through Skyline, connecting client priorities with business, design, and technical delivery.",
+      },
+      {
+        name: "Retail",
+        text: "Helped customers, processed transactions, and supported inventory and store presentation at Sport Chek.",
+        company: "Sport Chek",
+      },
+      {
+        name: "Food & beverage",
+        text: "Served food and beverage client contexts within the wider business, client-relationship, and technical-delivery background.",
+      },
+      {
+        name: "Hospitality & tourism",
+        text: "Served hospitality and tourism client contexts within the broader business, advisory, and delivery background.",
+      },
+    ] as IndustrySector[],
+  },
+  {
+    id: "digital",
+    title: "Digital & creative",
+    subtitle: "Ideas, information & expression",
+    icon: "✳",
+    color: "#bfb8e5",
+    focus: "Make an idea tangible, useful, and clear.",
+    text: "Software, IT, entertainment, media, and education clients sit alongside creative commissions and an original university project. Technology, design, and communication connect these different contexts.",
+    activities: [
+      "Full-stack, AI / ML & DevOps",
+      "Design & visual communication",
+      "International specialist-team coordination",
+    ],
+    company: "Upwork",
+    sectors: [
+      {
+        name: "Software & IT",
+        text: "Led freelance developer and consultant work with an 8–10-person specialist team covering front-end, back-end, AI / ML, and DevOps.",
+      },
+      {
+        name: "Entertainment & media",
+        text: "Entertainment and media companies were among Skyline's US client contexts, alongside custom game and visual-asset commissions.",
+        company: "Skyline Dynamics Inc.",
+      },
+      {
+        name: "Education",
+        text: "Education was part of Skyline's client background. My AI Study Companion is also an original University of London final project.",
+        company: "Skyline Dynamics Inc.",
+      },
+    ] as IndustrySector[],
+  },
+  {
+    id: "places",
+    title: "Places & mobility",
+    subtitle: "Property, transport & the built world",
+    icon: "⌂",
+    color: "#aacde0",
+    focus: "Join the visible experience to the systems behind it.",
+    text: "Real-estate interfaces, automotive services, and broader construction and logistics client contexts—connecting requirements, presentation, and implementation across different settings.",
+    activities: [
+      "Property interfaces & UI components",
+      "Vehicle showcases & payment functionality",
+      "Cross-industry requirements & delivery",
+    ],
+    company: "Skyline Dynamics Inc.",
+    sectors: [
+      {
+        name: "Real estate",
+        text: "Built front-end interfaces and reusable UI components, connecting the visual experience with services and back-end functionality.",
+      },
+      {
+        name: "Automotive",
+        text: "Worked on payment-related back-end functionality and vehicle showcases among a wider range of automotive tasks.",
+      },
+      {
+        name: "Transport & logistics",
+        text: "Connected client requirements, specialist coordination, and technical delivery in transport and logistics contexts.",
+      },
+      {
+        name: "Construction",
+        text: "Worked with construction client contexts through Skyline, bringing business requirements into specialist-team coordination and delivery.",
+      },
+    ] as IndustrySector[],
+  },
+  {
+    id: "systems",
+    title: "Industry & public life",
+    subtitle: "Production, responsibility & shared systems",
     icon: "◇",
-    color: "#c9bad1",
-    focus: "Considered delivery. Clear communication.",
-    text: "Government-related and security-related project work formed part of my US client background. This experience sits alongside commercial engagements across a range of industries.",
+    color: "#b7c7b3",
+    focus: "Look at the wider system. Take care of the details.",
+    text: "An industry background spanning heavy industry, manufacturing, agriculture, sustainable businesses, and government-related / security work. Common threads: coordination, considered advice, and practical delivery.",
     activities: [
-      "Technical project work",
-      "Stakeholder communication",
-      "Scope & team coordination",
+      "Business & technical project work",
+      "Planning, communication & documentation",
+      "Teams aligned around useful priorities",
     ],
-  },
-  {
-    id: "software",
-    title: "Technology",
-    subtitle: "Software · Consulting",
-    icon: "{ }",
-    color: "#adc5b7",
-    focus: "Build, advise, coordinate, and deliver.",
-    text: "Front-end, back-end, AI / ML, and DevOps work across software businesses and consulting engagements—from startups at different funding stages to established companies.",
-    activities: [
-      "Full-stack & cloud delivery",
-      "Agile coordination",
-      "Technical consulting",
-    ],
-  },
-  {
-    id: "retail",
-    title: "Retail",
-    subtitle: "Customer service · Sales",
-    icon: "○",
-    color: "#e5b7a8",
-    focus: "Meet people where they are.",
-    text: "In-person customer support and store operations at Sport Chek, complemented by freelance client service, marketing consulting, and B2B / wholesale team leadership.",
-    activities: [
-      "Customer assistance",
-      "Transactions & inventory",
-      "Sales & client relationships",
-    ],
+    company: "Skyline Dynamics Inc.",
+    sectors: [
+      {
+        name: "Heavy industry",
+        text: "Served heavy-industry client contexts, clarifying business requirements and coordinating specialist delivery.",
+      },
+      {
+        name: "Manufacturing",
+        text: "Connected business requirements, advisory discussions, and implementation work in manufacturing client contexts.",
+      },
+      {
+        name: "Agriculture",
+        text: "Served agriculture client contexts as part of the wider US business, advisory, and delivery background.",
+      },
+      {
+        name: "Sustainable businesses",
+        text: "Worked on interface concepts and prototypes at Second Bind, a company active in recycling, reuse, and donation.",
+        company: "Second Bind",
+      },
+      {
+        name: "Government & security",
+        text: "Contributed to government-related and security-related project work, with technical delivery and stakeholder communication alongside commercial engagements.",
+      },
+    ] as IndustrySector[],
   },
 ];
 
@@ -167,16 +268,17 @@ export const experience = [
     period: "Mar 2025 — Sep 2026",
     location: "Dover, Delaware incorporation · Remote from Cobourg, Ontario",
     tags: [
+      "15–20 international team",
       "US$300k+ earned revenue",
       "US$500k+ signed contract value",
-      "Multi-industry",
     ],
     description:
-      "Founded and led a US-incorporated business serving US clients across healthcare, real estate, automotive, fintech, software, fashion, e-commerce, consulting, and government-related work.",
+      "Founded and led a US-incorporated business with an international team of 15–20 people, serving US clients across consumer, financial, industrial, healthcare, creative, and public-sector contexts.",
     points: [
       "Generated more than US$300,000 in earned revenue and secured more than US$500,000 in signed contract value.",
-      "Handled company formation, tax and administrative responsibilities alongside client delivery.",
-      "Worked with startups at Series A, B, and C stages and established businesses to define scope, priorities, and project needs.",
+      "Led an international 15–20-person team while handling company formation, legal administration, taxes, budgeting, forecasting, financial planning, and analysis.",
+      "Worked with startups at Series A, B, and C stages and established businesses to define scope, quarterly and annual priorities, and project needs.",
+      "Joined invited client conferences and discussions on business priorities and possible improvements, translating the conversation into plans and coordinated work.",
       "Delivered front-end interfaces, back-end functionality, AI / ML work, and DevOps across different engagements.",
       "Projects included healthcare / EHR systems, real-estate interfaces, automotive payment functionality and showcases, and full-stack e-commerce systems.",
     ],
@@ -188,27 +290,29 @@ export const experience = [
     location: "US client engagements · Remote",
     tags: ["Consulting", "Team coordination", "Agile delivery"],
     description:
-      "Provided technical expertise, software work, and delivery coordination for clients across healthcare, e-commerce, insurance, real estate, and other industries.",
+      "Advised clients across industries on business and technical needs, company spending, and technology investment, alongside software delivery and team coordination.",
     points: [
-      "Joined stakeholder meetings and online conferences, gathered requirements, and translated key information into team tasks.",
+      "Joined client meetings and conferences, discussed priorities and improvements, summarized key information, and translated it into recommendations and team tasks.",
+      "Provided business and technical advice on company spending and technology-investment decisions.",
       "Delegated work among developers and helped coordinate agile sprints, priorities, and delivery.",
       "Contributed technical advice, project documentation, and front-end and back-end code.",
     ],
   },
   {
     company: "Upwork",
-    role: "Software Developer",
+    role: "Developer / Consultant / Agency Lead",
     period: "Apr 2023 — Jun 2025",
     location: "Cobourg, Ontario · Remote freelance",
-    tags: ["Full stack", "Client communication", "Freelance"],
+    tags: ["8–10 specialist team", "~US$50k agency revenue", "Client delivery"],
     description:
-      "Delivered freelance full-stack development, reusable interfaces, and integrations around client requirements.",
+      "Led developer and consultant work through an Upwork agency with 8–10 specialists, generating approximately US$50,000 in agency revenue.",
     points: [
-      "Built web features and connected front-end experiences to back-end services.",
+      "Coordinated an 8–10-person team spanning front-end, back-end, AI / ML, and DevOps specialties.",
+      "Prospected for projects, clarified client requirements, and coordinated specialist work alongside hands-on development.",
       "Worked directly with clients to clarify needs, communicate progress, and deliver practical solutions.",
       "Used a wider development toolkit spanning JavaScript, React, Node.js, Python, and service integrations.",
     ],
-    note: "End month is an estimate.",
+    note: "End month and agency revenue are estimates.",
   },
   {
     company: "Fiverr",

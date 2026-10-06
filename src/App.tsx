@@ -27,6 +27,8 @@ import {
 import { caseStudies, links, projects, skills, testimonials } from "./content";
 import type { CaseId } from "./content";
 import Atmosphere from "./Atmosphere";
+import { Monogram } from "./Monogram";
+import { LeadershipStudio } from "./LeadershipStudio";
 import {
   ExperienceJourney,
   IndustryExplorer,
@@ -323,7 +325,7 @@ function App() {
       <header className="site-header">
         <a className="brand" href="#home" aria-label="LukoDevelops home">
           <span className="brand-mark" aria-hidden="true">
-            L
+            <Monogram />
           </span>
           <span>
             Luko<span className="brand-light">Develops</span>
@@ -514,15 +516,17 @@ function App() {
           <PerspectiveSwitch />
         </section>
 
-        <div className="ticker" aria-hidden="true">
-          <div className="ticker-track">
-            {Array.from({ length: 3 }, (_, i) => (
-              <span key={i}>
-                CLIENT RELATIONSHIPS <span>✳</span> BUSINESS & OPERATIONS{" "}
-                <span>✳</span> DESIGN & TECHNOLOGY <span>✳</span> NEW
-                POSSIBILITIES <span>✳</span>
-              </span>
-            ))}
+        <div className="ticker-wrap" aria-hidden="true">
+          <div className="ticker">
+            <div className="ticker-track">
+              {Array.from({ length: 3 }, (_, i) => (
+                <span key={i}>
+                  CLIENT RELATIONSHIPS <span>✳</span> BUSINESS & OPERATIONS{" "}
+                  <span>✳</span> DESIGN & TECHNOLOGY <span>✳</span> NEW
+                  POSSIBILITIES <span>✳</span>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -1072,6 +1076,7 @@ function App() {
         </section>
 
         <ExperienceJourney />
+        <LeadershipStudio motion={motion} />
         <WorkingMethod />
 
         <section id="about" className="about-section section-shell">
