@@ -17,7 +17,7 @@ export type Skill = {
   description: string;
   connection: string;
 };
-export const skills: Skill[] = [
+export const technicalSkills: Skill[] = [
   {
     id: "javascript",
     name: "JavaScript",
@@ -116,7 +116,7 @@ export const skills: Skill[] = [
     name: "PostgreSQL",
     label: "SQL",
     color: "#7fa6c3",
-    category: "Data",
+    category: "Analytics",
     description:
       "Relational databases as part of a wider full-stack development toolbox.",
     connection: "Database experience includes PostgreSQL and NoSQL systems.",
@@ -126,7 +126,7 @@ export const skills: Skill[] = [
     name: "NoSQL",
     label: "Data",
     color: "#b4cda6",
-    category: "Data",
+    category: "Analytics",
     description:
       "Working with data beyond relational tables and exploring appropriate storage approaches.",
     connection: "Part of my database experience.",
@@ -156,7 +156,7 @@ export const skills: Skill[] = [
     name: "Figma",
     label: "Design",
     color: "#e89ca8",
-    category: "Creative technology",
+    category: "Design & communication",
     description:
       "Bringing interface ideas into focus through layout, components, and visual exploration.",
     connection: "Related to my UI/UX and front-end background.",
@@ -171,6 +171,135 @@ export const skills: Skill[] = [
       "Exploring useful AI experiences, source-linked study tools, and creative applications of software.",
     connection: "Explore AI Study Companion, my CM3070 project.",
   },
+];
+
+export const professionalSkills: Skill[] = [
+  {
+    id: "client",
+    name: "Client relationships",
+    label: "People",
+    color: "#c4f6c9",
+    category: "Business & people",
+    description:
+      "Listen carefully, communicate clearly, and turn a client's needs into shared priorities and practical next steps.",
+    connection:
+      "Across consulting, business ownership, freelance work, and in-person retail.",
+  },
+  {
+    id: "operations",
+    name: "Business operations",
+    label: "Ops",
+    color: "#e4c48c",
+    category: "Business & people",
+    description:
+      "Company setup, tax and administration, office management, and the details that help a business run.",
+    connection:
+      "Founder of Skyline Dynamics, with two years of office-management experience.",
+  },
+  {
+    id: "delivery",
+    name: "Project coordination",
+    label: "Plan",
+    color: "#aacde0",
+    category: "Business & people",
+    description:
+      "Requirements, task delegation, stakeholder meetings, documentation, and agile delivery with priorities that people understand.",
+    connection:
+      "Consulting at Bison Onward and three years of agile / Scrum delivery experience.",
+  },
+  {
+    id: "sales",
+    name: "Sales & customer service",
+    label: "Sales",
+    color: "#efb396",
+    category: "Business & people",
+    description:
+      "Customer-facing support, retail sales, and leading a three-person B2B / wholesale sales team.",
+    connection:
+      "Retail experience at Sport Chek, alongside broader client work and team leadership.",
+  },
+  {
+    id: "marketing",
+    name: "Marketing strategy",
+    label: "Mktg",
+    color: "#d3bbda",
+    category: "Business & people",
+    description:
+      "Four years of marketing strategy and consulting experience, connecting business needs, communication, and practical recommendations.",
+    connection: "Client engagements across a wide range of industries.",
+  },
+  {
+    id: "leadership",
+    name: "Team leadership",
+    label: "Lead",
+    color: "#b5ceb7",
+    category: "Business & people",
+    description:
+      "Delegate work, share the context, remove blockers, and keep people aligned around the next useful step.",
+    connection:
+      "Founder, software consultant, product ownership, and B2B sales-team management.",
+  },
+  {
+    id: "powerpoint",
+    name: "PowerPoint & presentations",
+    label: "Slides",
+    color: "#e0a79a",
+    category: "Design & communication",
+    description:
+      "Three years of advanced PowerPoint experience, bringing information into a clear and considered visual presentation.",
+    connection:
+      "Supported by design, client communication, and data-visualization experience.",
+  },
+  {
+    id: "design3d",
+    name: "3D design",
+    label: "3D",
+    color: "#b7b5ef",
+    category: "Design & communication",
+    description:
+      "Custom environments, architectural models, creatures, and individual assets, with attention to both the visual result and the client brief.",
+    connection: "Top-rated Fiverr work with more than CAD $15,000 in sales.",
+  },
+  {
+    id: "bi",
+    name: "Business intelligence",
+    label: "BI",
+    color: "#e4d895",
+    category: "Analytics",
+    description:
+      "Three years of professional BI work with Tableau and Power BI, supported by SQL-heavy analytics and Snowflake query optimization.",
+    connection:
+      "Four years of SQL work with joins, window functions, CTEs, and query optimization.",
+  },
+  {
+    id: "dataengineering",
+    name: "Data engineering",
+    label: "ETL",
+    color: "#a1cbd4",
+    category: "Analytics",
+    description:
+      "ETL and data-engineering experience, including Kafka, Spark, and Snowflake.",
+    connection:
+      "A practical analytical layer within my wider software and consulting background.",
+  },
+];
+export const skills: Skill[] = [...professionalSkills, ...technicalSkills];
+export const keyboardSkills: Skill[] = [
+  professionalSkills[0],
+  professionalSkills[1],
+  professionalSkills[2],
+  professionalSkills[3],
+  professionalSkills[4],
+  professionalSkills[5],
+  professionalSkills[6],
+  professionalSkills[7],
+  professionalSkills[8],
+  technicalSkills[13],
+  technicalSkills[0],
+  technicalSkills[1],
+  technicalSkills[3],
+  technicalSkills[5],
+  technicalSkills[14],
 ];
 
 export type Project = {
@@ -191,7 +320,8 @@ export const projects: Project[] = [
   },
   {
     name: "WoW-Pro-Guides",
-    description: "A World of Warcraft addon bringing guides into the game.",
+    description:
+      "500+ merged contributions to a shared guide addon, including guide updates, Lua fixes, and interface compatibility.",
     language: "Lua",
     fork: true,
     category: "Game systems",
@@ -199,14 +329,15 @@ export const projects: Project[] = [
   {
     name: "AllTheThings",
     description:
-      "Collection tracking and account completion for World of Warcraft.",
+      "Collection tracking for World of Warcraft. My contributions include 19 merged changes and collectible-data corrections.",
     language: "Lua",
     fork: true,
     category: "Game systems",
   },
   {
     name: "Questie",
-    description: "A quest helper for World of Warcraft Classic.",
+    description:
+      "A Classic quest helper. Contributed a merged fix for map coordinate and ID validation.",
     language: "Lua",
     fork: true,
     category: "Game systems",
@@ -220,7 +351,8 @@ export const projects: Project[] = [
   },
   {
     name: "ResourceCalculator",
-    description: "A resource calculator for video games.",
+    description:
+      "A game resource-planning tool. Contributed two merged fixes, including missing material and recipe mappings.",
     language: "Python",
     fork: true,
     category: "Tools",
@@ -315,11 +447,11 @@ export const testimonials = [
 
 export const caseStudies = {
   study: {
-    number: "01",
+    number: "03",
     title: "AI Study Companion",
-    category: "Original application · CM3070",
+    category: "University of London · Final university project",
     intro:
-      "A source-linked revision workspace that brings study materials and revision tools together.",
+      "My final university project for the University of London: a source-linked study workspace bringing notes, audio, images, summaries, questions, and flashcards together.",
     sections: [
       {
         title: "The idea",
@@ -327,7 +459,7 @@ export const caseStudies = {
       },
       {
         title: "My work",
-        text: "An original project in my GitHub account, developed for the CM3070 final project. The repository and live application provide the current implementation.",
+        text: "An original application developed for the CM3070 final project. I completed the project alongside all required coursework and credits; university results and the formal degree award are pending, expected in December 2026.",
       },
       {
         title: "Explore",
@@ -339,14 +471,28 @@ export const caseStudies = {
   },
   open: {
     number: "02",
-    title: "Open-source ecosystems",
-    category: "Game systems · Public repositories",
+    title: "Open source, tangible contributions",
+    category: "Guides · Data accuracy · Developer tools",
     intro:
-      "A collection of repositories around guides, interfaces, data, and tools for games.",
+      "Long-running contributions to existing open-source communities—from 500+ merged WoW-Pro-Guides changes to targeted fixes in data, interfaces, and resource tools.",
     sections: [
       {
-        title: "The ecosystem",
-        text: "WoW-Pro-Guides, Questie, AllTheThings, Grail, and related addon families form a broad part of my public repository collection.",
+        title: "WoW-Pro-Guides · 500+ merged changes",
+        text: "526 authored pull requests had been merged into the upstream project when checked on October 6, 2026. Work includes campaign-guide updates and interface compatibility. These are contributions to a shared project, rather than original authorship of the entire addon.",
+        url: "https://github.com/Ludovicus-Maior/WoW-Pro-Guides/pull/3417",
+        linkLabel: "View an interface-compatibility contribution",
+      },
+      {
+        title: "ALL THE THINGS · Data accuracy",
+        text: "19 merged upstream contributions when checked on October 6, 2026, including corrections to collectible coordinates. This work connects game knowledge with careful data maintenance.",
+        url: "https://github.com/ATTWoWAddon/AllTheThings/pull/2132",
+        linkLabel: "View a coordinate-data correction",
+      },
+      {
+        title: "ResourceCalculator & Questie · Focused fixes",
+        text: "Contributed missing recipe and material mappings to ResourceCalculator and map coordinate / ID validation to Questie. Small, specific improvements can make a shared tool more dependable.",
+        url: "https://github.com/AsherGlick/ResourceCalculator/pull/60",
+        linkLabel: "View a resource-calculator contribution",
       },
       {
         title: "Repository context",
@@ -360,15 +506,19 @@ export const caseStudies = {
     url: "https://github.com/LukoDevelops/WoW-Pro-Guides",
   },
   skyline: {
-    number: "03",
+    number: "01",
     title: "Skyline Dynamics",
-    category: "Past client work · Software & delivery",
+    category: "Past business · US clients · Cross-industry delivery",
     intro:
-      "Hands-on software work and contracting across different businesses and industries.",
+      "Founded a business incorporated in Dover, Delaware, and operated remotely from Cobourg, Ontario. Served US clients across startups at Series A, B, and C stages and established companies in a wide range of industries.",
     sections: [
       {
+        title: "Business impact",
+        text: "Generated more than US$300,000 in earned revenue and secured more than US$500,000 in signed contract value. Revenue and signed contract value are separate measures, reflecting both delivered business and the wider contracted work.",
+      },
+      {
         title: "Healthcare & dentistry",
-        text: "Developed and refined front-end interfaces and UI components, with integration between front-end experiences and supporting back-end functionality.",
+        text: "Developed front-end components and back-end functionality across healthcare and dentistry engagements, including work around EHR, hospitals, and healthcare systems.",
       },
       {
         title: "Real estate",
@@ -376,11 +526,15 @@ export const caseStudies = {
       },
       {
         title: "Automotive",
-        text: "Contributed to back-end work involving payment services and payment-related data.",
+        text: "Delivered back-end functionality for payment-related services alongside vehicle-showcase interfaces. These were among a wider range of automotive client tasks.",
       },
       {
-        title: "Project delivery",
-        text: "Client recommendations describe clear communication, contractor coordination, scoping, onboarding, and keeping stakeholders aligned. Skyline Dynamics is a past chapter of my work.",
+        title: "E-commerce, fashion, fintech & beyond",
+        text: "Built e-commerce systems from the ground up, with full-stack and AI / ML work. Other engagements included fashion, fintech, software, consulting, and government-related / security work. Front-end, back-end, AI / ML, and DevOps contributions varied with each client's needs.",
+      },
+      {
+        title: "Business ownership & delivery",
+        text: "Handled formation, tax and administration alongside scope definition, client relationships, and team coordination. Client recommendations describe clear communication, contractor coordination, scoping, onboarding, and keeping stakeholders aligned. Skyline Dynamics is a past chapter, not a currently active role.",
       },
     ],
     url: links.recommendations,

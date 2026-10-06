@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { skills } from "./content";
+import { keyboardSkills as skills } from "./content";
 
 type Props = {
   selected: string;

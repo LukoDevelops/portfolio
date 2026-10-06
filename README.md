@@ -2,6 +2,16 @@
 
 Personal portfolio for Lukas Zemolochinas / LukoDevelops, with interactive 3D artwork, selected projects, and an animated editorial layout.
 
+### October 6, 2026 career refresh
+
+The portfolio now leads with cross-industry experience in business ownership, client relationships, operations, sales, design, analytics, and technology. Historical job titles stay accurate. All six roles sit in one expandable career journey; education states that University of London coursework, credits, and the final project are complete, with results and the formal degree award pending until December 2026. Toronto Mississauga is transfer coursework without a degree.
+
+Visitors can explore four career perspectives, eight industry contexts in an animated experience atlas, four skill groups, and an interactive working-method console. The 3D keyboard connects to a mix of professional and technical skills. The atlas uses a spacious two-column directory on phones, and the centered L mark no longer has a corner arrow. The original scene artwork, cursor preferences, animation pause, responsive project catalogue, and accessible native project dialogs remain in place.
+
+Skyline Dynamics is identified as a past Delaware-incorporated business operated remotely from Cobourg, with US clients across industries. User-confirmed figures are explicitly separate: **US$300,000+ earned revenue** and **US$500,000+ signed contract value**. Fiverr sales are **CAD $15,000+**. Public GitHub evidence was checked on October 6: 526 authored merged WoW-Pro-Guides PRs, 19 in ALL THE THINGS, two in ResourceCalculator, and one in Questie. Shared-project authorship stays attributed to upstream communities, with direct evidence links in the open-source overview. Counts are dated snapshots.
+
+Professional learning includes nine entries from Google, IBM, HarvardX, MITx, Queen's, and PADI. Four Coursera credentials have direct verification links; first-aid training is explicitly identified as expired in August 2024. The search/social metadata and share-card artwork also use the broader identity.
+
 Live portfolio and free backup address: [lukodevelops.pages.dev](https://lukodevelops.pages.dev/).
 
 Repository: [LukoDevelops/portfolio](https://github.com/LukoDevelops/portfolio). Cloudflare Pages automatically builds and deploys the main branch. The public Pages deployment is verified; custom-domain registration and configuration remain pending.
@@ -45,7 +55,7 @@ Cloudflare Pages' free plan serves this static build. Production deployment and 
 ## Included
 
 - Sculpted Three.js mechanical keyboard with chamfered keycaps, polymer micrograin, brushed-metal chassis, instanced switch housings/stems, machined screws, ventilation, LEDs, illuminated trim, and cable hardware. A raised neon LUKO plaque uses a proportional 1280 × 480 label; the spacebar retains its proportional 2048 × 288 texture. Studio reflections are generated locally and refreshed after context restoration.
-- Spring-driven key travel, soft hover tilt, distance-delayed selection light waves, and staggered LEDs. A full 3 × 5 keyboard includes HTML alongside the existing technologies.
+- Spring-driven key travel, soft hover tilt, distance-delayed selection light waves, and staggered LEDs. The 3 × 5 keyboard mixes business, client, creative, analytical, and technical skills, including HTML.
 - Three original sculptural compositions (orbit, floating architecture, and portal), presented throughout selected work, the creative interlude, About, and contact. Ceramic grain, brushed and etched metal, indexed rails, clamps, lens assemblies, circuit traces, ports, processor packages, and curved turbine vanes enrich the models. Repeated details are instanced and procedural maps are shared within each scene.
 - Coordinated ring motion, lens energy arcs, traveling architecture waves, and gentle light breathing. Pointer easing uses elapsed time so response stays consistent across refresh rates. Pausing retains the sculptures' current pose and ignores decorative pointer movement.
 - Animated front-end glass panels with fasteners and etched details, layered back-end hardware with chips and pins, a dimensional engraved creative cube, and textured Skyline panels.
@@ -53,10 +63,10 @@ Cloudflare Pages' free plan serves this static build. Production deployment and 
 - A sculpted custom arrow with an exact tip, subtle banking, faceted mint/coral material, hover warmth, and click contraction. A tapered SVG ribbon, soft glow, and fine spine follow its heel through an eased rear point. The wake uses at most 16 samples, extends at most 108 px, and fades within 320 ms. Richer sage/copper ink keeps the effect visible over cream artwork, while text hover reduces its intensity. Decorative motion settles without an idle animation loop.
 - A persistent cursor switch lets visitors return to the system pointer. Native hiding begins only after the custom tip has a real mouse position. Text fields, native dialogs, keyboard use, paused animations, inactive windows, drag operations, touch/pen input, coarse pointers, and forced-colors mode retain or restore the native pointer.
 - Gradient typography, layered section surfaces, scrolling artwork, entrance reveals, cream-panel contour animations, and a visible reading-progress indicator. Supporting browsers use a view-timeline reveal for the creative interlude.
-- Accessible controls for all 15 technologies with the same selection state, including HTML in the toolbox, hero shortcuts, and front-end overview. Interface scans, layered hardware motion, routed data signals, and a rocking creative cube animate the supporting illustrations.
+- Accessible controls for all 25 skills in four groups, with the same selection state used by the 15-key scene and hero shortcuts. Interface scans, layered hardware motion, routed data signals, and a rocking creative cube animate the supporting illustrations.
 - Animation pause control, reduced-motion preference, off-screen/hidden rendering suspension, capped rendering resolution, and a visual fallback when WebGL is unavailable or its context is lost. The atmosphere draws at up to 30 fps with a 1.15-million-pixel budget; its phase, scroll composition, and pointer response freeze while paused. The keyboard is capped at 1.4 million pixels and each sculpture at 1.25 million. Decorative sculpture canvases initialize as they approach the viewport.
 - Responsive navigation and project overview dialogs with native focus handling.
-- The creative interlude separates IDEAS IN MOTION, DESIGN × CODE × CURIOSITY, and KEEP EXPLORING into reserved metadata rows. The portal's scroll drift stays inside a bounded model viewport; the outer caption rows remain stationary. A two-row phone footer keeps all three captions visible.
+- The creative interlude separates IDEAS IN MOTION, PEOPLE × IDEAS × POSSIBILITY, and KEEP EXPLORING into reserved metadata rows. The portal's scroll drift stays inside a bounded model viewport; the outer caption rows remain stationary. A two-row phone footer keeps all three captions visible.
 - Deterministic section tracking with an end-of-page correction for Contact, layout-change observation, animated white dots, and accessible current-location markers.
 - Three featured presentations, including Skyline Dynamics industry experience.
 - Searchable, filterable library of 22 relevant repositories with category counts, trimmed search, a clear control, keyboard Escape clearing, focus-preserving reset, result announcements, and accessible expansion state.
@@ -66,15 +76,26 @@ Cloudflare Pages' free plan serves this static build. Production deployment and 
 
 ## Content sources and review
 
-`src/content.ts` contains project descriptions, skill copy, public links, overview copy, and testimonials. The GitHub catalogue was checked against the public API on September 30, 2026. The profile README and introductory hello-world repository are intentionally excluded from the work library. Forks are labeled explicitly; repository size and upstream popularity are not presented as personal achievements. This catalogue is a curated snapshot, not a live feed.
+`src/content.ts` contains project descriptions, skill copy, public links, overview copy, and testimonials. `src/background.ts` supplies the career perspectives, industry contexts, experience journey, and working-method copy. The repository collection was checked on September 30, 2026, and direct contribution evidence was checked against GitHub on October 6, 2026. The profile README, introductory hello-world repository, and this portfolio are intentionally excluded from the work library. Forks are labeled explicitly; repository size and upstream popularity are not presented as personal achievements. This catalogue is a curated snapshot, not a live feed.
 
-Skyline copy uses the user's descriptions of healthcare/dentistry interfaces, real-estate integration work, automotive payment-related back-end work, and past contracting/project coordination. There are no invented client names, technologies, results, or metrics. Detailed contribution evidence can be added during the case-study pass.
+Skyline copy uses the user's descriptions of cross-industry US client delivery, healthcare/EHR work, real-estate interfaces, automotive payments and vehicle showcases, e-commerce systems, AI/ML, DevOps, business administration, and project coordination. The revenue and signed-contract figures were separately confirmed by the user. There are no invented client names or performance results. Open-source case studies link directly to verified upstream contributions and distinguish personal work from shared-project authorship.
 
 Testimonials are short, exact excerpts from Nicholas Evans, Timothy Williams, and William Maness, with public profile attribution and a link to the recommendations section. The AI Study Companion card is an original interface concept, labeled as such, rather than an actual app screenshot.
 
-The redesigned 2026 resume and cover letter are available in `public/documents/` and linked from Contact. They are copied from the finalized PDFs in the parent workspace; updates to those source documents must also be copied into this repository before deployment. The approved portrait, detailed education timeline, and expanded case studies remain future content updates. The free public address is live; custom-domain configuration remains a separate step.
+The cross-industry 2026 resume and cover letter are available in `public/documents/` and linked from Contact. They are copied from the finalized PDFs in the parent workspace; updates to those source documents must also be copied into this repository before deployment. The experience journey includes the education timeline, and project overviews include direct contribution evidence and expanded client-delivery context. The current site uses original artwork rather than a portrait. The free public address is live; custom-domain configuration remains a separate step.
 
 ## Verification
+
+### October 6, 2026 refresh
+
+- TypeScript checking and production build pass. The final build includes the refreshed share card and synchronized 2026 career PDFs.
+- Isolated Chrome checks passed at 320, 390, 640, 768, 1024, 1440, and 1920 px, plus 844 × 390 landscape. No page overflow or colliding industry controls were found.
+- Career-perspective selection, industry selection, grouped skills including PowerPoint and HTML, the experience accordion, working-method steps, Skyline's project dialog and Escape dismissal, and the Contact active indicator all passed.
+- Reduced-motion disables the atlas animation. No page errors were observed.
+- Desktop opening, industry atlas, toolbox, timeline, phone atlas, and share-card artwork were rendered and visually inspected. Phone industry controls use two columns to avoid overlap.
+- Other browsers and physical touch hardware were not tested in this refresh.
+
+### Earlier design checks
 
 - The free public Pages deployment was checked in Chrome: desktop and 390 px phone layouts, project search, project dialog and Escape dismissal, HTML selection, Contact navigation, correct canonical/social-image origin, and no browser console errors.
 - TypeScript checking and production build pass.

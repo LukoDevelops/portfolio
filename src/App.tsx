@@ -27,12 +27,20 @@ import {
 import { caseStudies, links, projects, skills, testimonials } from "./content";
 import type { CaseId } from "./content";
 import Atmosphere from "./Atmosphere";
+import {
+  ExperienceJourney,
+  IndustryExplorer,
+  PerspectiveSwitch,
+  ProfessionalLearning,
+  WorkingMethod,
+} from "./BackgroundExplorer";
 
 const KeyboardScene = lazy(() => import("./KeyboardScene"));
 const SculptureScene = lazy(() => import("./SculptureScene"));
 const navigation = [
   { id: "work", text: "Work" },
   { id: "skills", text: "Toolbox" },
+  { id: "experience", text: "Experience" },
   { id: "about", text: "About" },
   { id: "contact", text: "Contact" },
 ];
@@ -153,6 +161,17 @@ function CaseDialog({
         <div className="case-section" key={section.title}>
           <h3>{section.title}</h3>
           <p>{section.text}</p>
+          {"url" in section && (
+            <a
+              className="text-link case-evidence-link"
+              href={section.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {section.linkLabel}
+              <ArrowUpRight size={15} />
+            </a>
+          )}
         </div>
       ))}
       <div className="dialog-actions">
@@ -188,7 +207,7 @@ function App() {
   const [cursorEnabled, setCursorEnabled] = useCursorPreference();
   const [menu, setMenu] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [selected, setSelected] = useState("javascript");
+  const [selected, setSelected] = useState("client");
   const [filter, setFilter] = useState("All");
   const [query, setQuery] = useState("");
   const [showAll, setShowAll] = useState(false);
@@ -198,6 +217,18 @@ function App() {
   const copyTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const searchInput = useRef<HTMLInputElement>(null);
   const currentSkill = skills.find((skill) => skill.id === selected)!;
+  const skillGroups = [
+    "Business & people",
+    "Design & communication",
+    "Analytics",
+    "Technology",
+  ];
+  const groupForSkill = (skill: typeof currentSkill) =>
+    skillGroups.includes(skill.category) ? skill.category : "Technology";
+  const currentGroup = groupForSkill(currentSkill);
+  const visibleSkills = skills.filter(
+    (skill) => groupForSkill(skill) === currentGroup,
+  );
   const normalizedQuery = query.trim().toLowerCase();
   const filtered = projects.filter(
     (project) =>
@@ -291,8 +322,8 @@ function App() {
       </a>
       <header className="site-header">
         <a className="brand" href="#home" aria-label="LukoDevelops home">
-          <span className="brand-mark">
-            L<span>↗</span>
+          <span className="brand-mark" aria-hidden="true">
+            L
           </span>
           <span>
             Luko<span className="brand-light">Develops</span>
@@ -363,7 +394,8 @@ function App() {
         >
           <div className="hero-topline">
             <span className="eyebrow">
-              <span className="status-dot" /> SOFTWARE / DESIGN / EXPLORATION
+              <span className="status-dot" /> PEOPLE / BUSINESS / CREATIVE
+              THINKING
             </span>
             <span className="eyebrow hero-edition">
               INDEPENDENT MIND / CONNECTED IDEAS
@@ -377,16 +409,17 @@ function App() {
               <h1 id="hero-heading">
                 <span className="headline-line">Ideas into</span>
                 <br />
-                <span className="headline-line gradient-word">interfaces.</span>
+                <span className="headline-line gradient-word">impact.</span>
                 <br />
-                <span className="muted-word">And beyond.</span>
+                <span className="muted-word">Across worlds.</span>
                 <span className="hero-spark" aria-hidden="true">
                   ✳
                 </span>
               </h1>
               <p className="hero-description">
-                I build useful software, thoughtful digital experiences, and
-                things that make you want to explore.
+                I connect people, ideas, and practical skills to move work
+                forward. From business and customer service to design, data, and
+                technology.
               </p>
               <div className="hero-links">
                 <a className="primary-link" href="#work">
@@ -409,7 +442,7 @@ function App() {
                 43° N / CREATIVE MODE
               </span>
               <span className="floating-chip chip-code" aria-hidden="true">
-                &lt;/&gt;
+                ↔
               </span>
               <span className="floating-chip chip-star" aria-hidden="true">
                 ✳
@@ -442,13 +475,17 @@ function App() {
               </div>
               <div
                 className="hero-quick-keys"
-                aria-label="Explore keyboard technologies"
+                aria-label="Explore areas of experience"
               >
                 {skills
                   .filter((skill) =>
-                    ["javascript", "react", "html", "python", "ai"].includes(
-                      skill.id,
-                    ),
+                    [
+                      "client",
+                      "operations",
+                      "sales",
+                      "design3d",
+                      "ai",
+                    ].includes(skill.id),
                   )
                   .map((skill) => (
                     <button
@@ -467,26 +504,29 @@ function App() {
           </div>
           <div className="hero-bottom">
             <span>
-              <Globe2 size={14} /> BASED IN ONTARIO, CANADA
+              <Globe2 size={14} /> COBOURG, ONTARIO / OPEN TO OPPORTUNITIES
             </span>
-            <span>FULL-STACK MINDSET. CREATIVE CURIOSITY.</span>
+            <span>A BROAD BACKGROUND. A PRACTICAL MINDSET.</span>
             <a href="#work">
               SCROLL TO EXPLORE <ArrowDown size={14} />
             </a>
           </div>
+          <PerspectiveSwitch />
         </section>
 
         <div className="ticker" aria-hidden="true">
           <div className="ticker-track">
             {Array.from({ length: 3 }, (_, i) => (
               <span key={i}>
-                THOUGHTFUL INTERFACES <span>✳</span> USEFUL SOFTWARE{" "}
-                <span>✳</span> CREATIVE TECHNOLOGY <span>✳</span> ALWAYS
-                EXPLORING <span>✳</span>
+                CLIENT RELATIONSHIPS <span>✳</span> BUSINESS & OPERATIONS{" "}
+                <span>✳</span> DESIGN & TECHNOLOGY <span>✳</span> NEW
+                POSSIBILITIES <span>✳</span>
               </span>
             ))}
           </div>
         </div>
+
+        <IndustryExplorer />
 
         <section id="work" className="work section-shell">
           <div className="section-title-row">
@@ -496,8 +536,8 @@ function App() {
               detail="SELECTED WORK"
             />
             <p>
-              From a study workspace to open-source ecosystems and real-world
-              client work.
+              Business and client delivery, university research, and real
+              contributions to shared open-source projects.
             </p>
           </div>
           <div className="featured-grid">
@@ -506,7 +546,7 @@ function App() {
               onClick={() => setCaseId("study")}
             >
               <div className="project-visual study-visual">
-                <span className="visual-label">ORIGINAL APPLICATION</span>
+                <span className="visual-label">FINAL UNIVERSITY PROJECT</span>
                 <div className="study-window">
                   <div className="window-top">
                     <span>
@@ -549,13 +589,13 @@ function App() {
                   </div>
                 </div>
                 <span className="visual-footnote">INTERFACE CONCEPT</span>
-                <span className="visual-number">01</span>
+                <span className="visual-number">03</span>
               </div>
               <div className="featured-description">
                 <div>
-                  <span className="eyebrow">AI / WEB APPLICATION</span>
+                  <span className="eyebrow">UNIVERSITY OF LONDON / CM3070</span>
                   <h3>AI Study Companion</h3>
-                  <p>A source-linked revision workspace.</p>
+                  <p>From study materials to source-linked understanding.</p>
                 </div>
                 <span className="round-arrow">
                   <ArrowUpRight size={23} />
@@ -581,8 +621,8 @@ function App() {
               <div className="featured-description">
                 <div>
                   <span className="eyebrow">LUA / GAME SYSTEMS</span>
-                  <h3>Open-source ecosystems</h3>
-                  <p>Guides, interfaces, and useful game tools.</p>
+                  <h3>Contributing to the bigger picture</h3>
+                  <p>500+ merged WoW-Pro changes. Shared tools, improved.</p>
                 </div>
                 <span className="round-arrow">
                   <ArrowUpRight size={23} />
@@ -606,15 +646,17 @@ function App() {
                   </div>
                 </div>
                 <span className="visual-footnote">
-                  SOFTWARE × PROJECT DELIVERY
+                  BUSINESS × CLIENTS × DELIVERY
                 </span>
-                <span className="visual-number">03</span>
+                <span className="visual-number">01</span>
               </div>
               <div className="featured-description">
                 <div>
-                  <span className="eyebrow">CLIENT WORK / FULL STACK</span>
+                  <span className="eyebrow">US BUSINESS / CROSS-INDUSTRY</span>
                   <h3>Skyline Dynamics</h3>
-                  <p>Digital work across different industries.</p>
+                  <p>
+                    Ownership, technical delivery, and client relationships.
+                  </p>
                 </div>
                 <span className="round-arrow">
                   <ArrowUpRight size={23} />
@@ -756,7 +798,7 @@ function App() {
             <div className="library-bottom">
               <p role="status" aria-live="polite" aria-atomic="true">
                 {visibleProjects.length} of {filtered.length} projects shown{" "}
-                <span>· Repository collection checked September 2026</span>
+                <span>· Contribution evidence checked October 2026</span>
               </p>
               {!normalizedQuery && filter === "All" && (
                 <button
@@ -787,8 +829,9 @@ function App() {
                 <em>magic.</em>
               </h2>
               <p>
-                Good software can be practical and playful. I like exploring the
-                space where solid engineering meets unexpected experiences.
+                Useful work can be practical and imaginative. I enjoy making
+                connections between people, systems, and ideas—and finding a
+                clearer way forward.
               </p>
               <a href="#skills" className="lab-link">
                 Explore the ingredients <ArrowDown size={18} />
@@ -812,7 +855,7 @@ function App() {
               </div>
               <div className="lab-art-meta lab-art-meta-bottom">
                 <div className="lab-art-caption">
-                  <span className="status-dot" /> DESIGN × CODE × CURIOSITY
+                  <span className="status-dot" /> PEOPLE × IDEAS × POSSIBILITY
                 </div>
                 <span className="lab-cross cross-two" aria-hidden="true">
                   +
@@ -835,20 +878,40 @@ function App() {
               detail="MY TOOLBOX"
             />
             <p>
-              A full-stack toolkit, with room for design, automation, and a
-              little experimentation.
+              People and business first. Creative, analytical, and technical
+              depth when the work calls for it.
             </p>
           </div>
           <div className="toolbox-layout">
             <div className="skill-board">
+              <div className="toolbox-groups" aria-label="Choose a skill group">
+                {skillGroups.map((group) => (
+                  <button
+                    key={group}
+                    aria-pressed={currentGroup === group}
+                    onClick={() =>
+                      setSelected(
+                        skills.find((skill) => groupForSkill(skill) === group)!
+                          .id,
+                      )
+                    }
+                  >
+                    {group}
+                  </button>
+                ))}
+              </div>
               <div className="board-header">
                 <span>
                   <span className="status-dot" /> LUKO / TOOLBOX
                 </span>
                 <span>CLICK TO EXPLORE</span>
               </div>
-              <div className="skill-keys" aria-label="Select a skill">
-                {skills.map((skill) => (
+              <div
+                className="skill-keys"
+                data-group={currentGroup}
+                aria-label="Select a skill"
+              >
+                {visibleSkills.map((skill) => (
                   <button
                     className={`skill-key ${selected === skill.id ? "is-selected" : ""}`}
                     style={
@@ -866,7 +929,7 @@ function App() {
               </div>
               <div className="spacebar">
                 <span>curiosity is the constant.</span>
-                <Braces size={20} />
+                <Sparkles size={20} />
               </div>
             </div>
             <div className="skill-detail" aria-live="polite">
@@ -897,11 +960,11 @@ function App() {
           aria-labelledby="capabilities-title"
         >
           <div className="capabilities-heading" data-reveal>
-            <span className="eyebrow">FROM THE SURFACE TO THE SYSTEM</span>
+            <span className="eyebrow">MORE THAN ONE WAY TO CONTRIBUTE</span>
             <h2 id="capabilities-title">
-              Different layers.
+              A wider perspective.
               <br />
-              <span>One connected experience.</span>
+              <span>Practical contributions.</span>
             </h2>
           </div>
           <div className="capability-grid">
@@ -929,19 +992,18 @@ function App() {
                 </div>
                 <span className="art-plus">+</span>
               </div>
-              <span className="eyebrow">01 / THE EXPERIENCE</span>
-              <h3>Front-end & design</h3>
+              <span className="eyebrow">01 / THE PEOPLE & THE PLAN</span>
+              <h3>Business & client delivery</h3>
               <p>
-                Semantic HTML, expressive interfaces, reusable components,
-                responsive layouts, and the details that make software feel
-                right.
+                Business ownership, client service, sales, requirements,
+                stakeholder communication, and coordinating the work from the
+                first conversation through delivery.
               </p>
               <div className="capability-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>React</span>
-                <span>TypeScript</span>
-                <span>UI/UX</span>
+                <span>Operations</span>
+                <span>Sales</span>
+                <span>Client service</span>
+                <span>Agile</span>
               </div>
             </article>
             <article className="capability-card" data-reveal>
@@ -965,16 +1027,18 @@ function App() {
                 </div>
                 <span className="system-line" />
               </div>
-              <span className="eyebrow">02 / THE ENGINE</span>
-              <h3>Back-end & automation</h3>
+              <span className="eyebrow">02 / THE CONNECTED SYSTEM</span>
+              <h3>Technology & analytics</h3>
               <p>
-                Application logic, data, service integrations, and practical
-                automation connecting everything behind the interface.
+                Full-stack development, AI / ML, data engineering, BI, cloud
+                delivery, and automation. Technical skills grounded in the needs
+                of the business and the people using the result.
               </p>
               <div className="capability-tags">
-                <span>Python</span>
-                <span>Node.js</span>
-                <span>Databases</span>
+                <span>Full stack</span>
+                <span>AI / ML</span>
+                <span>BI & data</span>
+                <span>DevOps</span>
               </div>
             </article>
             <article className="capability-card" data-reveal>
@@ -991,27 +1055,31 @@ function App() {
                 <span className="creative-ring" />
                 <span className="creative-dot" />
               </div>
-              <span className="eyebrow">03 / THE NEXT IDEA</span>
-              <h3>AI & creative technology</h3>
+              <span className="eyebrow">03 / THE TANGIBLE IDEA</span>
+              <h3>Design & communication</h3>
               <p>
-                Exploring useful AI applications, 3D experiences, game systems,
-                and new ways to connect people with technology.
+                UI/UX, custom 3D assets, advanced presentations, and visual
+                thinking. Making complex ideas easier to understand and turning
+                the brief into something people can experience.
               </p>
               <div className="capability-tags">
-                <span>AI</span>
+                <span>UI/UX</span>
                 <span>3D</span>
-                <span>Game systems</span>
+                <span>Presentations</span>
               </div>
             </article>
           </div>
         </section>
 
+        <ExperienceJourney />
+        <WorkingMethod />
+
         <section id="about" className="about-section section-shell">
           <div className="about-layout">
             <div className="about-title">
-              <span className="eyebrow">03 / THE PERSON BEHIND THE PIXELS</span>
+              <span className="eyebrow">03 / THE PERSON BEHIND THE WORK</span>
               <h2>
-                Developer.
+                Builder.
                 <br />
                 Collaborator.
                 <br />
@@ -1032,32 +1100,33 @@ function App() {
             </div>
             <div className="about-copy">
               <p className="about-lead">
-                I’m Lukas Zemolochinas, a software developer and computer
-                science student with a full-stack mindset and an eye for the
-                experience.
+                I’m Lukas Zemolochinas—also known as LukoDevelops. My background
+                brings together business ownership, consulting, customer
+                service, design, and hands-on technical work.
               </p>
               <p>
-                I enjoy connecting the visual side of software with the systems
-                behind it. My interests span interfaces, automation, AI, and
-                creative technology—including UI/UX and 3D design.
+                I’m interested in opportunities across industries. What I bring
+                is a willingness to understand the work, communicate clearly,
+                learn the context, and take responsibility for the next step.
               </p>
               <p>
-                Through Skyline Dynamics, I combined hands-on development with
-                contracting and project coordination across healthcare, real
-                estate, automotive, fintech, and other industries.
+                I’ve run a US-incorporated business remotely from Canada,
+                supported a retail team in person, delivered custom 3D work, and
+                contributed to shared open-source projects. Different settings,
+                with people and practical results at the centre.
               </p>
               <div className="about-facts">
                 <div>
                   <small>BASED IN</small>
-                  <span>Ontario, Canada</span>
+                  <span>Cobourg, Ontario, Canada</span>
                 </div>
                 <div>
-                  <small>STUDYING</small>
-                  <span>Computer Science</span>
+                  <small>EDUCATION</small>
+                  <span>CS coursework complete · Degree pending</span>
                 </div>
                 <div>
                   <small>CURRENT INTERESTS</small>
-                  <span>Full stack / AI / creative tech</span>
+                  <span>Business / people / design / technology</span>
                 </div>
               </div>
               <a
@@ -1080,12 +1149,17 @@ function App() {
                 "Automotive",
                 "Fintech",
                 "Government / security",
+                "E-commerce & fashion",
+                "Software & consulting",
+                "Retail & customer service",
               ].map((industry) => (
                 <span key={industry}>{industry}</span>
               ))}
             </div>
           </div>
         </section>
+
+        <ProfessionalLearning />
 
         <section
           className="testimonials section-shell"

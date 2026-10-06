@@ -68,7 +68,7 @@ let robots = "User-agent: *\nAllow: /\n";
 if (siteUrl) {
   const escapedUrl = escapeAttribute(siteUrl);
   const socialImage = escapeAttribute(`${siteUrl}social-card.png`);
-  const alt = "LukoDevelops portfolio: Ideas into interfaces. And beyond.";
+  const alt = "LukoDevelops portfolio: Ideas into impact. Across worlds.";
   const metadata = `
     <!-- deployment-metadata:start -->
     <link rel="canonical" href="${escapedUrl}" />
