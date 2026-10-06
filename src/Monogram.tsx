@@ -14,13 +14,13 @@ export function Monogram({ className = "" }: { className?: string }) {
       <path
         d="M26 3 L38 3 C41 3 43 4 45 6 L58 19 C60 21 61 23 61 26 L61 38 C61 41 60 43 58 45 L45 58 C43 60 41 61 38 61 L26 61 C23 61 21 60 19 58 L6 45 C4 43 3 41 3 38 L3 26 C3 23 4 21 6 19 L19 6 C21 4 23 3 26 3 Z"
         transform="translate(4.64 4.64) scale(0.855)"
-        fill="#EEF3DF"
-        stroke="#88A28A"
+        fill="#183D2C"
+        stroke="#8AA68D"
         strokeWidth=".8"
       />
       <path
-        d="M20 13 L39 13 L39 17 L34 17 L34 40 C34 43 35 44 38 44 L42 44 C45 44 47 41 48 37 L51 37 L49 49 L20 49 L20 45 L25 45 L25 17 L20 17 Z"
-        fill="#183D2C"
+        d="M25 16.5 L32 16.5 L32 32.5 C32 34.71 33.79 36.5 36 36.5 L45 36.5 L45 43.5 L25 43.5 Z"
+        fill="#EEF3DF"
       />
     </svg>
   );
