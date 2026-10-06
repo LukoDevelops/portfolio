@@ -1,0 +1,230 @@
+{
+  "verified": "October 6, 2026",
+  "owned": [
+    {
+      "name": "AIStudyCompanion",
+      "url": "https://github.com/LukoDevelops/AIStudyCompanion",
+      "kind": "Original project"
+    },
+    {
+      "name": "AllTheThings",
+      "url": "https://github.com/LukoDevelops/AllTheThings",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "ConROC",
+      "url": "https://github.com/LukoDevelops/ConROC",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "ConROC-TBC",
+      "url": "https://github.com/LukoDevelops/ConROC-TBC",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "ConROC_Hunter",
+      "url": "https://github.com/LukoDevelops/ConROC_Hunter",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "ConROC_Rogue",
+      "url": "https://github.com/LukoDevelops/ConROC_Rogue",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "ConROC_Shaman",
+      "url": "https://github.com/LukoDevelops/ConROC_Shaman",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "ConRO_Hunter",
+      "url": "https://github.com/LukoDevelops/ConRO_Hunter",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "Grail",
+      "url": "https://github.com/LukoDevelops/Grail",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "hello-world",
+      "url": "https://github.com/LukoDevelops/hello-world",
+      "kind": "Setup / reference"
+    },
+    {
+      "name": "litematica",
+      "url": "https://github.com/LukoDevelops/litematica",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "LukoDevelops",
+      "url": "https://github.com/LukoDevelops/LukoDevelops",
+      "kind": "Setup / reference"
+    },
+    {
+      "name": "MaxDps",
+      "url": "https://github.com/LukoDevelops/MaxDps",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "MaxDps-Hunter",
+      "url": "https://github.com/LukoDevelops/MaxDps-Hunter",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "MaxDps-Mage",
+      "url": "https://github.com/LukoDevelops/MaxDps-Mage",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "MaxDps-Priest",
+      "url": "https://github.com/LukoDevelops/MaxDps-Priest",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "Midnight-Routine",
+      "url": "https://github.com/LukoDevelops/Midnight-Routine",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "minarch",
+      "url": "https://github.com/LukoDevelops/minarch",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "MountJournalEnhanced",
+      "url": "https://github.com/LukoDevelops/MountJournalEnhanced",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "Pawn",
+      "url": "https://github.com/LukoDevelops/Pawn",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "portfolio",
+      "url": "https://github.com/LukoDevelops/portfolio",
+      "kind": "Setup / reference"
+    },
+    {
+      "name": "Questie",
+      "url": "https://github.com/LukoDevelops/Questie",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "ResourceCalculator",
+      "url": "https://github.com/LukoDevelops/ResourceCalculator",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "StdUi",
+      "url": "https://github.com/LukoDevelops/StdUi",
+      "kind": "Personal fork"
+    },
+    {
+      "name": "WoW-Pro-Guides",
+      "url": "https://github.com/LukoDevelops/WoW-Pro-Guides",
+      "kind": "Personal fork"
+    }
+  ],
+  "community": [
+    {
+      "name": "AsherGlick/ResourceCalculator",
+      "url": "https://github.com/AsherGlick/ResourceCalculator",
+      "authored": 2,
+      "merged": 2,
+      "evidence": "https://github.com/AsherGlick/ResourceCalculator/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "ATTWoWAddon/AllTheThings",
+      "url": "https://github.com/ATTWoWAddon/AllTheThings",
+      "authored": 23,
+      "merged": 19,
+      "evidence": "https://github.com/ATTWoWAddon/AllTheThings/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "doadin/MaxDps-Hunter",
+      "url": "https://github.com/doadin/MaxDps-Hunter",
+      "authored": 1,
+      "merged": 0,
+      "evidence": "https://github.com/doadin/MaxDps-Hunter/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "exochron/MountJournalEnhanced",
+      "url": "https://github.com/exochron/MountJournalEnhanced",
+      "authored": 2,
+      "merged": 1,
+      "evidence": "https://github.com/exochron/MountJournalEnhanced/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "kaminaris/MaxDps-Hunter",
+      "url": "https://github.com/kaminaris/MaxDps-Hunter",
+      "authored": 2,
+      "merged": 1,
+      "evidence": "https://github.com/kaminaris/MaxDps-Hunter/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "kaminaris/MaxDps-Mage",
+      "url": "https://github.com/kaminaris/MaxDps-Mage",
+      "authored": 1,
+      "merged": 0,
+      "evidence": "https://github.com/kaminaris/MaxDps-Mage/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "knifebunny/ConROC-TBC",
+      "url": "https://github.com/knifebunny/ConROC-TBC",
+      "authored": 1,
+      "merged": 1,
+      "evidence": "https://github.com/knifebunny/ConROC-TBC/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "LoyalFTW/Midnight-Routine",
+      "url": "https://github.com/LoyalFTW/Midnight-Routine",
+      "authored": 4,
+      "merged": 4,
+      "evidence": "https://github.com/LoyalFTW/Midnight-Routine/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "Ludovicus-Maior/WoW-Pro-Guides",
+      "url": "https://github.com/Ludovicus-Maior/WoW-Pro-Guides",
+      "authored": 578,
+      "merged": 526,
+      "evidence": "https://github.com/Ludovicus-Maior/WoW-Pro-Guides/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "MrFox42/minarch",
+      "url": "https://github.com/MrFox42/minarch",
+      "authored": 1,
+      "merged": 1,
+      "evidence": "https://github.com/MrFox42/minarch/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "Questie/Questie",
+      "url": "https://github.com/Questie/Questie",
+      "authored": 1,
+      "merged": 1,
+      "evidence": "https://github.com/Questie/Questie/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "Vae2009/ConROC_Hunter",
+      "url": "https://github.com/Vae2009/ConROC_Hunter",
+      "authored": 2,
+      "merged": 0,
+      "evidence": "https://github.com/Vae2009/ConROC_Hunter/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "Vae2009/ConROC_Shaman",
+      "url": "https://github.com/Vae2009/ConROC_Shaman",
+      "authored": 1,
+      "merged": 0,
+      "evidence": "https://github.com/Vae2009/ConROC_Shaman/pulls?q=is%3Apr+author%3ALukoDevelops"
+    },
+    {
+      "name": "VgerMods/Pawn",
+      "url": "https://github.com/VgerMods/Pawn",
+      "authored": 1,
+      "merged": 0,
+      "evidence": "https://github.com/VgerMods/Pawn/pulls?q=is%3Apr+author%3ALukoDevelops"
+    }
+  ]
+}

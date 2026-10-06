@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { sceneAnchors, sceneScroll } from "./sceneInputs";
 
 type Props = {
   variant: "orbit" | "stack" | "portal";
@@ -70,6 +71,17 @@ function surfaceTexture(kind: "ceramic" | "brushed" | "etched") {
       context.beginPath();
       context.moveTo(0, y + random());
       context.lineTo(256, y + random());
+      context.stroke();
+    }
+    // A few longer tool marks sit over the fine directional grain.
+    context.strokeStyle = "rgba(48,48,48,0.14)";
+    context.lineWidth = 0.35;
+    for (let i = 0; i < 34; i++) {
+      const y = random() * 256;
+      const x = random() * 210;
+      context.beginPath();
+      context.moveTo(x, y);
+      context.lineTo(Math.min(256, x + 20 + random() * 90), y + 0.2);
       context.stroke();
     }
   } else {
@@ -177,7 +189,7 @@ export default function SculptureScene({
       renderer.setClearColor(0x000000, 0);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.35;
+      renderer.toneMappingExposure = 1.18;
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFShadowMap;
       renderer.domElement.setAttribute("aria-hidden", "true");
@@ -205,7 +217,7 @@ export default function SculptureScene({
         textureCache.add(texture);
       });
       const environmentScene = new THREE.Scene();
-      environmentScene.background = new THREE.Color("#414c46");
+      environmentScene.background = new THREE.Color("#29342e");
       const panelGeometry = new THREE.PlaneGeometry(12, 8);
       const panelMaterial = new THREE.MeshBasicMaterial({
         color: "#fff4de",
@@ -233,8 +245,8 @@ export default function SculptureScene({
       (secondPanel.material as THREE.Material).dispose();
       pmrem.dispose();
 
-      scene.add(new THREE.HemisphereLight(0xfff4e2, 0x16251e, 2.5));
-      const key = new THREE.DirectionalLight(0xffe9d0, 4.5);
+      scene.add(new THREE.HemisphereLight(0xfff4e2, 0x16251e, 2));
+      const key = new THREE.DirectionalLight(0xffe9d0, 4.1);
       key.position.set(-4, 7, 7);
       key.castShadow = true;
       key.shadow.mapSize.set(512, 512);
@@ -243,29 +255,32 @@ export default function SculptureScene({
       key.shadow.camera.top = 6;
       key.shadow.camera.bottom = -6;
       key.shadow.bias = -0.0005;
+      key.shadow.normalBias = 0.018;
       scene.add(key);
-      const rim = new THREE.DirectionalLight(0xb9f3d3, 5);
+      const rim = new THREE.DirectionalLight(0xb9f3d3, 3.7);
       rim.position.set(5, 3, -4);
       scene.add(rim);
-      const coralFill = new THREE.PointLight(0xff8269, 17, 15, 2);
+      const coralFill = new THREE.PointLight(0xff8269, 11, 15, 2);
       coralFill.position.set(-4, -1, 2);
       scene.add(coralFill);
 
       const material = (
         color: string,
         metalness = 0.15,
-        roughness = 0.22,
+        roughness = 0.36,
         glow = false,
       ) => {
         const value = new THREE.MeshPhysicalMaterial({
           color,
           metalness,
           roughness,
-          clearcoat: metalness > 0.7 ? 0.35 : 0.75,
-          clearcoatRoughness: 0.16,
-          envMapIntensity: 1.4,
+          clearcoat: metalness > 0.7 ? 0.16 : 0.42,
+          clearcoatRoughness: 0.25,
+          envMapIntensity: 1.15,
+          anisotropy: metalness > 0.7 ? 0.48 : 0,
+          anisotropyRotation: Math.PI / 2,
           bumpMap: metalness > 0.7 ? brushedTexture : ceramicTexture,
-          bumpScale: metalness > 0.7 ? 0.006 : 0.009,
+          bumpScale: metalness > 0.7 ? 0.013 : 0.012,
           roughnessMap: metalness > 0.7 ? brushedTexture : ceramicTexture,
           ...(glow ? { emissive: color, emissiveIntensity: 0.2 } : {}),
         });
@@ -273,15 +288,19 @@ export default function SculptureScene({
         return value;
       };
       const cream = material(palette.cream);
-      const mint = material(palette.mint, 0.32, 0.18, true);
-      const coral = material(palette.coral, 0.12, 0.24);
-      const dark = material(palette.graphite, 0.6, 0.24);
-      const metal = material(palette.silver, 0.88, 0.14);
-      const satin = material("#737e77", 0.82, 0.29);
+      const mint = material(palette.mint, 0.18, 0.32, true);
+      const coral = material(palette.coral, 0.1, 0.38);
+      const dark = material(palette.graphite, 0.52, 0.4);
+      const metal = material(palette.silver, 0.93, 0.3);
+      const satin = material("#737e77", 0.85, 0.46);
       const etched = material("#3e5147", 0.7, 0.38);
       etched.bumpMap = etchedTexture;
       etched.bumpScale = 0.014;
       const lens = material("#244a41", 0.72, 0.08, true);
+      lens.clearcoat = 1;
+      lens.clearcoatRoughness = 0.06;
+      lens.iridescence = 0.14;
+      lens.iridescenceIOR = 1.35;
       const mesh = (
         geometry: THREE.BufferGeometry,
         surface: THREE.Material,
@@ -834,7 +853,7 @@ export default function SculptureScene({
 
       const shadowSurface = mesh(
         new THREE.PlaneGeometry(30, 30),
-        new THREE.ShadowMaterial({ opacity: 0.14 }),
+        new THREE.ShadowMaterial({ opacity: 0.2 }),
         scene,
       );
       materialCache.add(shadowSurface.material as THREE.Material);
@@ -852,6 +871,8 @@ export default function SculptureScene({
       let pointerY = 0;
       let currentX = 0;
       let currentY = 0;
+      let scrollPose = 0;
+      const scrollAnchor = element.closest(sceneAnchors);
       const initialRotation = sculpture.rotation.clone();
       const draw = (stamp: number) => {
         frame = 0;
@@ -864,16 +885,23 @@ export default function SculptureScene({
         if (motionRef.current) elapsed += dt;
         animated.forEach((part) => part.update(elapsed));
         mint.emissiveIntensity = 0.22 + Math.sin(elapsed * 0.48) * 0.035;
-        coralFill.intensity = 17 + Math.sin(elapsed * 0.48 + 0.8) * 1.2;
+        coralFill.intensity = 11 + Math.sin(elapsed * 0.48 + 0.8) * 0.7;
         if (motionRef.current) {
           const easing = 1 - Math.exp(-5.2 * dt);
           currentX += (pointerX - currentX) * easing;
           currentY += (pointerY - currentY) * easing;
+          scrollPose +=
+            ((scrollAnchor ? (sceneScroll.get(scrollAnchor) ?? 0) : 0) -
+              scrollPose) *
+            easing;
         }
-        sculpture.rotation.y = initialRotation.y + currentX * 0.13;
-        sculpture.rotation.x = initialRotation.x + currentY * 0.085;
+        sculpture.rotation.y =
+          initialRotation.y + currentX * 0.13 + scrollPose * 0.18;
+        sculpture.rotation.x =
+          initialRotation.x + currentY * 0.085 + scrollPose * 0.07;
         // Pausing freezes the current composition instead of snapping to its base.
-        sculpture.position.y = Math.sin(elapsed * 0.55) * 0.075;
+        sculpture.position.y =
+          Math.sin(elapsed * 0.55) * 0.075 + scrollPose * 0.06;
         renderer.render(scene, camera);
         if (motionRef.current) frame = requestAnimationFrame(draw);
       };

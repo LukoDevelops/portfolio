@@ -408,7 +408,8 @@ export const projects: Project[] = [
   },
   {
     name: "MountJournalEnhanced",
-    description: "An extended interface for the in-game mount journal.",
+    description:
+      "An extended mount-journal interface. Contributed a merged update to its favorites functionality.",
     language: "Lua",
     fork: true,
     category: "Interfaces",
@@ -422,14 +423,16 @@ export const projects: Project[] = [
   },
   {
     name: "Midnight-Routine",
-    description: "A World of Warcraft to-do list.",
+    description:
+      "A World of Warcraft planning tool. Four merged upstream contributions, including profession-knowledge data updates.",
     language: "Lua",
     fork: true,
     category: "Tools",
   },
   {
     name: "minarch",
-    description: "The Minimal Archaeology addon for World of Warcraft.",
+    description:
+      "The Minimal Archaeology addon. Contributed a merged update to its companion functionality.",
     language: "Lua",
     fork: true,
     category: "Game systems",
@@ -494,7 +497,13 @@ export const caseStudies = {
       },
       {
         title: "My work",
-        text: "An original application developed for the CM3070 final project. I completed the project alongside all required coursework and credits; university results and the formal degree award are pending, expected in December 2026.",
+        text: "An original application developed for the CM3070 final project, with document import, local English transcription, OCR, source-linked revision and saved practice progress. I completed the project alongside all required coursework and credits; university results and the formal degree award are pending, expected in December 2026.",
+      },
+      {
+        title: "Software evidence",
+        text: "The public application contains 73 source files. All 255 automated tests across 54 test files passed when checked on October 6, 2026. Four study engines support different ways to explore study material.",
+        url: "https://github.com/LukoDevelops/AIStudyCompanion/actions/runs/36282525481",
+        linkLabel: "View the passing public test run",
       },
       {
         title: "Explore",
@@ -528,6 +537,12 @@ export const caseStudies = {
         text: "Contributed missing recipe and material mappings to ResourceCalculator and map coordinate / ID validation to Questie. Small, specific improvements can make a shared tool more dependable.",
         url: "https://github.com/AsherGlick/ResourceCalculator/pull/60",
         linkLabel: "View a resource-calculator contribution",
+      },
+      {
+        title: "Midnight Routine & related tools",
+        text: "Four merged changes in Midnight Routine include profession-knowledge data maintenance. Further merged contributions appear in MountJournalEnhanced, minarch, MaxDps-Hunter and ConROC-TBC. The complete public directory links each upstream review history, including proposed changes that were not merged.",
+        url: "https://github.com/LoyalFTW/Midnight-Routine/pull/78",
+        linkLabel: "View a profession-data contribution",
       },
       {
         title: "Repository context",

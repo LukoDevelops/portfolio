@@ -29,6 +29,7 @@ import type { CaseId } from "./content";
 import Atmosphere from "./Atmosphere";
 import { Monogram } from "./Monogram";
 import { LeadershipStudio } from "./LeadershipStudio";
+import { PublicWork, RepositoryDirectory } from "./PublicWork";
 import {
   ExperienceJourney,
   IndustryExplorer,
@@ -669,6 +670,8 @@ function App() {
             </button>
           </div>
 
+          <PublicWork />
+
           <div className="library">
             <div className="library-header">
               <div>
@@ -816,6 +819,7 @@ function App() {
                 </button>
               )}
             </div>
+            <RepositoryDirectory />
           </div>
         </section>
 

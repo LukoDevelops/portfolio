@@ -21,7 +21,7 @@ const workstreams = [
     id: "priorities",
     name: "Planning & priorities",
     short: "Priorities",
-    position: [50, 84],
+    position: [50, 82],
   },
   {
     id: "business",
@@ -227,7 +227,6 @@ export function LeadershipStudio({ motion }: { motion: boolean }) {
     if (
       !motion ||
       event.pointerType !== "mouse" ||
-      matchMedia("(prefers-reduced-motion: reduce)").matches ||
       (event.target instanceof Element && event.target.closest("button"))
     )
       return;
@@ -302,11 +301,13 @@ export function LeadershipStudio({ motion }: { motion: boolean }) {
               onPointerMove={tilt}
               onPointerLeave={resetTilt}
             >
-              <div className="delivery-network" ref={scene}>
-                <div className="network-surface" aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
+              <div className="delivery-network">
+                <div className="network-art" ref={scene} aria-hidden="true">
+                  <div className="network-surface">
+                    <i />
+                    <i />
+                    <i />
+                  </div>
                 </div>
                 <svg
                   className="network-connections"
@@ -336,13 +337,6 @@ export function LeadershipStudio({ motion }: { motion: boolean }) {
                 </svg>
                 <div className="network-hub" aria-hidden="true">
                   <Monogram />
-                  <small>
-                    {item.id === "skyline"
-                      ? "15–20 PEOPLE"
-                      : item.id === "upwork"
-                        ? "8–10 SPECIALISTS"
-                        : "SHARED CONTEXT"}
-                  </small>
                 </div>
                 {workstreams.map((stream, index) => (
                   <button
@@ -350,6 +344,7 @@ export function LeadershipStudio({ motion }: { motion: boolean }) {
                     key={stream.id}
                     aria-label={`Explore ${stream.name}`}
                     aria-pressed={selected === index}
+                    aria-controls="studio-responsibility"
                     style={{
                       left: `${stream.position[0]}%`,
                       top: `${stream.position[1]}%`,
@@ -361,19 +356,24 @@ export function LeadershipStudio({ motion }: { motion: boolean }) {
                     <i aria-hidden="true" />
                   </button>
                 ))}
-                <span
-                  className="network-coordinate network-coordinate-a"
-                  aria-hidden="true"
-                >
-                  PEOPLE → PURPOSE
-                </span>
-                <span
-                  className="network-coordinate network-coordinate-b"
-                  aria-hidden="true"
-                >
-                  {String(stage + 1).padStart(2, "0")} / 04
-                </span>
               </div>
+            </div>
+            <div className="network-readout">
+              <span className="network-team">
+                <UsersRound size={13} aria-hidden="true" />
+                {item.id === "skyline"
+                  ? "15–20 PEOPLE"
+                  : item.id === "upwork"
+                    ? "8–10 SPECIALISTS"
+                    : "SHARED CONTEXT"}
+              </span>
+              <span className="network-selection">
+                <i aria-hidden="true" />
+                {workstreams[selected].name}
+              </span>
+              <span className="network-phase" aria-hidden="true">
+                {String(stage + 1).padStart(2, "0")} / 04
+              </span>
             </div>
             <div className="delivery-scrubber">
               <label htmlFor="delivery-stage">
@@ -432,6 +432,7 @@ export function LeadershipStudio({ motion }: { motion: boolean }) {
             </div>
             <div
               className="studio-responsibility"
+              id="studio-responsibility"
               key={`${item.id}-${selected}`}
               aria-live="polite"
             >

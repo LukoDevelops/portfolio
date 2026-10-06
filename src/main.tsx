@@ -14,6 +14,7 @@ import "./experience.css";
 import "./lab-layout.css";
 import "./broad-experience.css";
 import "./refinement.css";
+import "./public-work.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

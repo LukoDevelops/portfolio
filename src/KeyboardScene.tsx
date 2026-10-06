@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { sceneAnchors, sceneScroll } from "./sceneInputs";
 import { keyboardSkills as skills } from "./content";
 
 type Props = {
@@ -200,6 +201,7 @@ export default function KeyboardScene({ selected, onSelect, motion }: Props) {
 
   useEffect(() => {
     const element = host.current!;
+    const scrollAnchor = element.closest(sceneAnchors);
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({
@@ -258,12 +260,14 @@ export default function KeyboardScene({ selected, onSelect, motion }: Props) {
     const chassisMaterial = new THREE.MeshPhysicalMaterial({
       color: "#333b39",
       metalness: 0.7,
-      roughness: 0.36,
+      roughness: 0.43,
       clearcoat: 0.28,
       clearcoatRoughness: 0.25,
       roughnessMap: metalGrain,
       bumpMap: metalGrain,
-      bumpScale: 0.007,
+      bumpScale: 0.012,
+      anisotropy: 0.5,
+      anisotropyRotation: Math.PI / 2,
       envMapIntensity: 0.9,
     });
     const chassis = new THREE.Mesh(
@@ -785,17 +789,28 @@ export default function KeyboardScene({ selected, onSelect, motion }: Props) {
       const ease = animated ? 1 - Math.exp(-delta * 5.5) : 1;
       const illuminationEase = animated ? 1 - Math.exp(-delta * 17) : 1;
       const idleLift = animated ? Math.sin(elapsed * 0.64) * 0.075 : 0;
-      assembly.position.y += (idleLift - assembly.position.y) * ease;
+      const scrollPose =
+        animated && scrollAnchor ? (sceneScroll.get(scrollAnchor) ?? 0) : 0;
+      assembly.position.y +=
+        (idleLift + scrollPose * 0.035 - assembly.position.y) * ease;
       const rotationY =
         -0.24 +
-        (animated ? Math.sin(elapsed * 0.31) * 0.025 + tiltX * 0.055 : 0);
+        (animated
+          ? Math.sin(elapsed * 0.31) * 0.025 +
+            tiltX * 0.055 +
+            scrollPose * 0.075
+          : 0);
       assembly.rotation.y += (rotationY - assembly.rotation.y) * ease;
       assembly.rotation.z +=
         ((animated ? tiltX * -0.037 + Math.sin(elapsed * 0.47) * 0.009 : 0) -
           assembly.rotation.z) *
         ease;
       assembly.rotation.x +=
-        ((animated ? tiltY * 0.045 + Math.sin(elapsed * 0.38) * 0.008 : 0) -
+        ((animated
+          ? tiltY * 0.045 +
+            Math.sin(elapsed * 0.38) * 0.008 +
+            scrollPose * 0.035
+          : 0) -
           assembly.rotation.x) *
         ease;
       keys.forEach((key) => {

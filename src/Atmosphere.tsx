@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef } from "react";
 import PointerFlow from "./PointerFlow";
+import { sceneAnchors, sceneScroll } from "./sceneInputs";
 
 const LivingBackground = lazy(() => import("./LivingBackground"));
 
@@ -40,13 +41,16 @@ export default function Atmosphere({
 
     const chapters = [
       ...document.querySelectorAll<HTMLElement>(
-        ".hero, .work, .creative-lab, .skills-section, .capabilities, .about-section, .testimonials, .contact-section",
+        ".hero, .industry-explorer, .work, .creative-lab, .skills-section, .capabilities, .experience-journey, .leadership-studio, .working-method, .learning-section, .about-section, .testimonials, .contact-section",
       ),
     ];
     const drifts = [
       ...document.querySelectorAll<HTMLElement>(
         ".lab-art, .about-sculpture-wrap, .contact-sculpture-wrap, .capability-art",
       ),
+    ];
+    const sceneTargets = [
+      ...document.querySelectorAll<HTMLElement>(sceneAnchors),
     ];
     let frame = 0;
     const update = () => {
@@ -68,16 +72,35 @@ export default function Atmosphere({
       const driftRects = drifts.map((element) =>
         element.getBoundingClientRect(),
       );
+      const sceneRects = sceneTargets.map((element) =>
+        element.getBoundingClientRect(),
+      );
+      // App resolves the reduced-motion default and any explicit user override.
+      const canMove = motionValue.current;
+      const depthScale = window.innerWidth <= 640 ? 0.4 : 1;
       chapterRects.forEach((rect, index) => {
         const distance = Math.abs(rect.top + rect.height * 0.5 - height * 0.5);
         if (distance < nearest) {
           nearest = distance;
           chapter = index;
         }
+        const travel = canMove
+          ? Math.max(
+              -1,
+              Math.min(
+                1,
+                (rect.top + rect.height * 0.35 - height * 0.5) / height,
+              ),
+            )
+          : 0;
+        chapters[index].style.setProperty(
+          "--chapter-travel",
+          travel.toFixed(3),
+        );
       });
       root.dataset.chapter = String(chapter);
       driftRects.forEach((rect, index) => {
-        const drift = motionValue.current
+        const drift = canMove
           ? Math.max(
               -1,
               Math.min(
@@ -87,6 +110,22 @@ export default function Atmosphere({
             )
           : 0;
         drifts[index].style.setProperty("--drift", drift.toFixed(3));
+      });
+      sceneRects.forEach((rect, index) => {
+        const value = canMove
+          ? Math.max(
+              -1,
+              Math.min(
+                1,
+                (rect.top + rect.height * 0.5 - height * 0.5) / (height * 0.8),
+              ),
+            ) * depthScale
+          : 0;
+        sceneScroll.set(sceneTargets[index], value);
+        sceneTargets[index].style.setProperty(
+          "--scene-depth",
+          value.toFixed(3),
+        );
       });
     };
     const schedule = () => {
@@ -124,14 +163,33 @@ export default function Atmosphere({
       delete root.dataset.chapter;
       root.style.removeProperty("--journey");
       drifts.forEach((element) => element.style.removeProperty("--drift"));
+      chapters.forEach((element) =>
+        element.style.removeProperty("--chapter-travel"),
+      );
+      sceneTargets.forEach((element) => {
+        sceneScroll.delete(element);
+        element.style.removeProperty("--scene-depth");
+      });
     };
   }, []);
 
   useEffect(() => {
-    if (!motion)
+    if (!motion) {
       document
         .querySelectorAll<HTMLElement>("[style*='--drift']")
         .forEach((element) => element.style.setProperty("--drift", "0"));
+      document
+        .querySelectorAll<HTMLElement>(sceneAnchors)
+        .forEach((element) => {
+          sceneScroll.set(element, 0);
+          element.style.setProperty("--scene-depth", "0");
+        });
+      document
+        .querySelectorAll<HTMLElement>("[style*='--chapter-travel']")
+        .forEach((element) =>
+          element.style.setProperty("--chapter-travel", "0"),
+        );
+    }
   }, [motion]);
 
   return (
